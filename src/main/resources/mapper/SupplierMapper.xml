@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SupplierMapper">
+    <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.SupplierTest">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="SUPPLIER_NAME" property="supplierName" jdbcType="VARCHAR"/>
+        <result column="SUPPLIER_DESCRIBE" property="supplierDescribe" jdbcType="VARCHAR"/>
+        <result column="PHONE" property="phone" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
+    <sql id="Base_Column_List">
+        ID,SUPPLIER_NAME,SUPPLIER_DESCRIBE,PHONE
+    </sql>
+    <!--查找所有-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_supplier
+    </select>
+    <!--获取id-->
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_supplier t
+        WHERE t.ID=#{id}
+    </select>
+    <!--添加-->
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.SupplierTest">
+        INSERT INTO t_supplier( ID,SUPPLIER_NAME,SUPPLIER_DESCRIBE,PHONE)
+        VALUES #{id},#{suppliername},#{supplierdescribe},#{phone}
+    </insert>
+    <!--删除-->
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM t_supplier
+        WHERE ID = #{id}
+    </delete>
+    <!--修改-->
+    <update id="updateById" parameterType="com.gameloft9.demo.dataaccess.model.system.SupplierTest">
+        UPDATE t_supplier
+        SET SUPPLIER_NAME=#{suppliername},SUPPLIER_DESCRIBE=#{supplierdescribe},PHONE=#{phone}
+        WHERE ID = #{id}
+    </update>
+</mapper>

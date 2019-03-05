@@ -9,8 +9,5 @@
         <module name="layui-admin" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="layui-admin" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

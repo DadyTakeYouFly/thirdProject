@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.DepotInvenCheckDetailMapper">
+    <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckDetailTest">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="CHECK_ID" property="checkId" jdbcType="VARCHAR"/>
+        <result column="GOODS_TYPE" property="goodsType" jdbcType="INTEGER"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
+        <result column="GOODS_NUMBER" property="goodsNumber" jdbcType="VARCHAR"/>
+        <result column="AUDIT_USER" property="auditUser" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
+    <sql id="Base_Column_List">
+        ID,CHECK_ID,GOODS_TYPE,GOODS_ID,GOODS_NUMBER,AUDIT_USER
+    </sql>
+    <!--查找所有-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_depot_inventory_check_detail
+    </select>
+    <!--获取id-->
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_depot_inventory_check_detail t
+        WHERE t.ID=#{id}
+    </select>
+    <!--添加-->
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckDetailTest">
+        INSERT INTO t_depot_inventory_check_detail(ID,CHECK_ID,GOODS_TYPE,GOODS_ID,
+        GOODS_NUMBER,AUDIT_USER)
+        VALUES #{id},#{checkid},#{goodstype},#{goodsid},#{goodsnumber},#{audituser}
+    </insert>
+    <!--删除-->
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM t_depot_inventory_check_detail
+        WHERE ID = #{id}
+    </delete>
+    <!--修改-->
+    <update id="updateById" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckDetailTest">
+        UPDATE t_depot_inventory_check_detail
+        SET CHECK_ID=#{checkid},GOODS_TYPE=#{goodstype},GOODS_ID=#{goodsid},
+        GOODS_NUMBER=#{goodsnumber},AUDIT_USER=#{audituser}
+        WHERE ID = #{id}
+    </update>
+
+</mapper>

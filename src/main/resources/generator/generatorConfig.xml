@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="jdbc.properties"/>
+    <!--MyBatis3Simple-->
+    <context id="mysql" targetRuntime="MyBatis3Simple">
+
+        <!-- 通用mapper的代码生成插件 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+        <!-- targetProject:生成model类的位置 -->
+        <javaModelGenerator targetPackage="com.gameloft9.demo.dataaccess.model" targetProject=".\src\main\java"/>
+
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources"/>
+
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator targetPackage="com.gameloft9.demo.dataaccess.dao" targetProject=".\src\main\java" type="XMLMAPPER"/>
+
+        <!-- 指定数据库表-->
+        <table tableName="t_depot_inventory" domainObjectName="DepotInventory"/>
+        <table tableName="t_depot_inventory_check" domainObjectName="DepotInventoryCheck"/>
+        <table tableName="t_depot_inventory_check_detail" domainObjectName="DepotInventoryCheckDetail"/>
+        <table tableName="t_depot_order" domainObjectName="DepotOrder"/>
+        <table tableName="t_material" domainObjectName="Material"/>
+        <table tableName="t_material_goods" domainObjectName="MaterialGoods"/>
+        <table tableName="t_produce_formula" domainObjectName="Produceformula"/>
+        <table tableName="t_produce_formula_detail" domainObjectName="ProduceFormulaDetail"/>
+        <table tableName="t_product" domainObjectName="Product"/>
+        <table tableName="t_purchase_order" domainObjectName="PurchaseOrder"/>
+        <table tableName="t_supplier" domainObjectName="Supplier"/>
+    </context>
+</generatorConfiguration>

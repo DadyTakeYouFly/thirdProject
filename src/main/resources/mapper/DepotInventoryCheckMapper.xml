@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.DepotInventoryCheckMapper">
+    <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckTest">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="SOURCE_USER" property="sourceUser" jdbcType="VARCHAR"/>
+        <result column="SOURCE_TIME" property="sourceTime" jdbcType="VARCHAR"/>
+        <result column="RECORD_NUMBER" property="recordNumber" jdbcType="VARCHAR"/>
+        <result column="STATE" property="state" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
+    <sql id="Base_Column_List">
+        ID,SOURCE_USER,SOURCE_TIME,RECORD_NUMBER,STATE
+    </sql>
+    <!--查找所有-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_depot_inventory_check
+    </select>
+    <!--获取id-->
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_depot_inventory_check t
+        WHERE t.ID=#{id}
+    </select>
+    <!--添加-->
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckTest">
+        INSERT INTO t_depot_inventory_check(ID,SOURCE_USER,SOURCE_TIME,RECORD_NUMBER,STATE)
+        VALUES #{id},#{sourceuser},#{sourcetime},#{recordnumber},#{state}
+    </insert>
+    <!--删除-->
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM t_depot_inventory_check
+        WHERE ID = #{id}
+    </delete>
+    <!--修改-->
+    <update id="updateById" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckTest">
+        UPDATE t_depot_inventory_check
+        SET SOURCE_USER=#{sourceuser},SOURCE_TIME=#{sourcetime},RECORD_NUMBER=#{recordnumber},
+        STATE=#{state}
+        WHERE ID = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.DepotInventoryMapper">
+    <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.DepotInventoryTest">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="GOODS_TYPE" property="goodsType" jdbcType="INTEGER"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
+    <sql id="Base_Column_List">
+        ID,GOODS_TYPE,GOODS_ID
+    </sql>
+    <!--查找所有-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_depot_inventory
+    </select>
+    <!--获取id-->
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_depot_inventory t
+        WHERE t.ID=#{id}
+    </select>
+    <!--添加-->
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotInventoryTest">
+        INSERT INTO t_depot_inventory_check(ID,GOODS_TYPE,GOODS_ID)
+        VALUES #{id},#{goodstype},#{goodsid}
+    </insert>
+    <!--删除-->
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM t_depot_inventory
+        WHERE ID = #{id}
+    </delete>
+    <!--修改-->
+    <update id="updateById" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotInventoryTest">
+        UPDATE t_depot_inventory
+        SET GOODS_TYPE=#{goodstype},GOODS_ID=#{goodsid}
+        WHERE ID = #{id}
+    </update>
+
+</mapper>

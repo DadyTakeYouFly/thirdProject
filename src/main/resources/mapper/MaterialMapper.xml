@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.MaterialMapper">
+    <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.MaterialTest">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="GOODS_NAME" property="goodsName" jdbcType="VARCHAR"/>
+        <result column="GOODS_TYPE" property="goodsType" jdbcType="INTEGER"/>
+        <result column="GOODS_DESCRIBE" property="goodsDescribe" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
+    <sql id="Base_Column_List">
+        ID,GOODS_NAME,GOODS_TYPE,GOODS_DESCRIBE
+    </sql>
+    <!--查找所有-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_material
+    </select>
+    <!--获取id-->
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_material t
+        WHERE t.ID=#{id}
+    </select>
+    <!--添加-->
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.MaterialTest">
+        INSERT INTO t_material(ID,GOODS_NAME,GOODS_TYPE,GOODS_DESCRIBE)
+        VALUES #{id},#{goodsname},#{goodstype},#{goodsdescribe}
+    </insert>
+    <!--删除-->
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM t_material
+        WHERE ID = #{id}
+    </delete>
+    <!--修改-->
+    <update id="updateById" parameterType="com.gameloft9.demo.dataaccess.model.system.MaterialTest">
+        UPDATE t_material
+        SET GOODS_NAME=#{goodsname},GOODS_TYPE=#{goodstype},GOODS_DESCRIBE=#{goodsdescribe}
+        WHERE ID = #{id}
+    </update>
+</mapper>
