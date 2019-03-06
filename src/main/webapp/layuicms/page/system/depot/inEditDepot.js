@@ -132,7 +132,7 @@ layui.config({
             depotIdList:idList
         };
 
-        $api.UpdateDepot(JSON.stringify(req),{contentType:'application/json;charset=utf-8'},function (data) {
+        $api.UpdateDepot(req,function (data) {
             layer.msg("修改成功！",{time:1000},function () {
                 layer.closeAll("iframe");
                 //刷新父页面

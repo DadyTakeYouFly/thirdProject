@@ -59,7 +59,7 @@
         count(1)
         from t_depot_order t
         <where>
-        <if test="id != null and id != ''">
+        <if test="orderType != null and orderType != ''">
             and t.ID = #{id}
         </if>
         <if test="state != null and state != ''">
@@ -71,7 +71,7 @@
     <select id="selectAll" resultMap="BaseResultMap">
         select * from t_depot_order t
         <where>
-        <if test="id != null and id != ''">
+        <if test="orderType != null and orderType != ''">
             and t.ID = #{id}
         </if>
         <if test="state != null and state != ''">

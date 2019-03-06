@@ -18,9 +18,9 @@
 <blockquote class="layui-elem-quote news_search">
     <form class="layui-form">
         <div class="layui-inline">
-            <label class="layui-form-label">单号查询</label>
+            <label class="layui-form-label">订单类型</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="inspectId" placeholder="请输入订单单号">
+                <input type="text" class="layui-input" name="inspectId" placeholder="请输入订单类型">
             </div>
         </div>
         <div class="layui-inline">
@@ -28,13 +28,13 @@
             <div class="layui-input-block">
                 <select name="isSuper" >
                     <option value="">-----请选择-----</option>
-                    <option value="0">申请中</option>
-                    <option value="1">审核中</option>
+                    <option value="0">-----申请中-----</option>
+                    <option value="1">-----审核中-----</option>
                 </select>
             </div>
         </div>
         <div class="layui-inline">
-            <a class="layui-btn search_btn" lay-submit="" lay-filter="queryRole">查询</a>
+            <a class="layui-btn search_btn" lay-submit="" lay-filter="queryDepot">查询</a>
         </div>
         <div class="layui-inline">
             <a class="layui-btn layui-btn-normal usersAdd_btn">入库单申请</a>

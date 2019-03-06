@@ -68,13 +68,13 @@ layui.config({
 
     //查询  insepectId单号查询
     form.on("submit(queryDepot)", function (data) {
-        var id = data.field.id;
+        var orderType = data.field.orderType;
         var state = data.field.state;
 
         //表格重新加载
         tableIns.reload({
             where:{
-                id:id,
+                orderType:orderType,
                 state:state
             }
         });

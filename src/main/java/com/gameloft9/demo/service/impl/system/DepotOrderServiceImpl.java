@@ -18,10 +18,10 @@ public class DepotOrderServiceImpl implements DepotOrderService {
     DepotOrderMapper dao;
 
     //查询所有
-    public List<DepotOrderTest> selectAll() {
-        List<DepotOrderTest> list = dao.selectAll();
-        return list;
-    }
+//    public List<DepotOrderTest> selectAll() {
+//        List<DepotOrderTest> list = dao.selectAll();
+//        return list;
+//    }
 
     //获取id
     public DepotOrderTest selectByPrimaryKey(String id) {
@@ -79,16 +79,16 @@ public class DepotOrderServiceImpl implements DepotOrderService {
     /**
      * 获取所有角色
      * */
-    public List<DepotOrderTest> getAll(String page, String limit, String id, String state){
+    public List<DepotOrderTest> getAll(String page, String limit, String orderType, String state){
         PageRange pageRange = new PageRange(page,limit);
-        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),id,state);
+        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),orderType,state);
     }
 
     /**
      * 获取所有角色个数
      * */
-    public int countGetAll(String id,String state){
-        return dao.countGetAll(id,state);
+    public int countGetAll(String orderType,String state){
+        return dao.countGetAll(orderType,state);
     }
 
 
