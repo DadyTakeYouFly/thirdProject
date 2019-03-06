@@ -21,14 +21,17 @@ public interface DepotOrderService {
         //更新
         boolean updateByPrimaryKey(DepotOrderTest depotOrderTest);
 
+        /**
+         * 获取所有角色
+         * @param page 页序
+         * @param limit 分页大小
+         * */
+        List<DepotOrderTest> getAll(String page, String limit, String id, String state);
 
-        //分页获取用户列表
-          //@param page         页序
-          //@param limit        分页大小
-          //@param loginName     登录名
-          //@param realName     姓名
-          //@param status       状态 0-禁用 1-启用
-        String getAll(String page, String limit,String status);
+        /**
+         * 获取所有角色个数
+         * */
+        int countGetAll(String id,String state);
 
 
 }

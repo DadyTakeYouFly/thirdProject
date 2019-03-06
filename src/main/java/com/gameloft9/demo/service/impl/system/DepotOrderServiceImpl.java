@@ -44,16 +44,20 @@ public class DepotOrderServiceImpl implements DepotOrderService {
         return true;
     }
 
-     //分页获取用户列表
-     //@param page         页序
-     //@param limit        分页大小
-     //@param loginName     登录名
-     //@param realName     姓名
-     //@param status       状态 0-禁用 1-启用
-     public String getAll(String page, String limit,String loginName,String status) {
-        PageRange pageRange = new PageRange(page, limit);
-        return dao.getAll(pageRange.getStart(), pageRange.getEnd(),status);
-     }
+    /**
+     * 获取所有角色
+     * */
+    public List<DepotOrderTest> getAll(String page, String limit, String id, String state){
+        PageRange pageRange = new PageRange(page,limit);
+        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),id,state);
+    }
+
+    /**
+     * 获取所有角色个数
+     * */
+    public int countGetAll(String id,String state){
+        return dao.countGetAll(id,state);
+    }
 
 
 }

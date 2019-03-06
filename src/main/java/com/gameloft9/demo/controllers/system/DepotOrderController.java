@@ -28,8 +28,8 @@ public class DepotOrderController {
     /*获取所有资料*/
     @RequestMapping(value="/list.do",method = RequestMethod.POST)
     @ResponseBody
-    public IResult selectAll(String page, String limit,String status){
-        return new PageResultBean<Collection<DepotOrderTest>>(service.getAll(page,limit,status));
+    public IResult selectAll(String page, String limit,String id,String state){
+        return new PageResultBean<Collection<DepotOrderTest>>(service.getAll(page,limit,id,state),service.countGetAll(id,state));
     }
 
     /*根据id获取该id数据*/

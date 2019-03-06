@@ -64,13 +64,13 @@ layui.config({
 
     //查询  insepectId单号查询
     form.on("submit(queryRole)", function (data) {
-        var inspectId = data.field.inspectId;
+        var id = data.field.id;
         var state = data.field.state;
 
         //表格重新加载
         tableIns.reload({
             where:{
-                inspectId:inspectId,
+                id:id,
                 state:state
             }
         });
