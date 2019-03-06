@@ -3,7 +3,7 @@
 <mapper namespace="com.gameloft9.demo.dataaccess.dao.system.DepotOrderMapper">
     <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
         <id column="ID" property="id" jdbcType="VARCHAR"/>
-        <result column="ORDER_TYPE" property="orderType" jdbcType="INTEGER"/>
+        <result column="ORDER_TYPE" property="orderType" />
         <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
         <result column="GOODS_NUMBER" property="goodsNumber" jdbcType="VARCHAR"/>
         <result column="APPLY_USER" property="applyUser" jdbcType="VARCHAR"/>
@@ -21,7 +21,7 @@
         ORDER_AUDIT_TIME,APPLY_DESCRIBE,AUDIT_DESCRIBE
     </sql>
     <!--获取id-->
-    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         SELECT
         <include refid="Base_Column_List"/>
         FROM t_depot_order t
@@ -31,21 +31,21 @@
     <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
         INSERT INTO t_depot_order(ID,ORDER_TYPE,GOODS_ID,GOODS_NUMBER,APPLY_USER,APPLY_TIME,
         STATE,ORDER_AUDIT_USER,ORDER_AUDIT_TIME,APPLY_DESCRIBE,AUDIT_DESCRIBE)
-        VALUES #{id},#{ordertype},#{goodsid},#{goodsnumber},#{applyuser},#{applytime},#{state},
-        #{orderaudituser},#{orderaudittime},#{applydescribe},#{auditdescribe}
+        VALUES (#{id},#{orderType},#{goodsId},#{goodsNumber},#{applyUser},#{applyTime},#{state},
+        #{orderAuditUser},#{orderAuditTime},#{applyDescribe},#{auditDescribe})
     </insert>
     <!--删除-->
-    <delete id="deleteById" parameterType="java.lang.String">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         DELETE FROM t_depot_order
         WHERE ID = #{id}
     </delete>
     <!--修改-->
-    <update id="updateById" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
+    <update id="update" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
         UPDATE t_depot_order
-        SET ORDER_TYPE=#{ordertype},GOODS_ID=#{goodsid},GOODS_NUMBER=#{goodsnumber},APPLY_USER=#{applyuser},
-        APPLY_TIME=#{applytime},STATE=#{state},ORDER_AUDIT_USER=#{orderaudituser},
-        ORDER_AUDIT_TIME=#{orderaudittime},APPLY_DESCRIBE=#{applydescribe},
-        AUDIT_DESCRIBE=#{auditdescribe}
+        SET ORDER_TYPE=#{orderType},GOODS_ID=#{goodsId},GOODS_NUMBER=#{goodsNumber},APPLY_USER=#{applyUser},
+        APPLY_TIME=#{applyTime},STATE=#{state},ORDER_AUDIT_USER=#{orderAuditUser},
+        ORDER_AUDIT_TIME=#{orderAuditTime},APPLY_DESCRIBE=#{applyDescribe},
+        AUDIT_DESCRIBE=#{auditDescribe}
         WHERE ID = #{id}
     </update>
     <!--总条数查找所有-->

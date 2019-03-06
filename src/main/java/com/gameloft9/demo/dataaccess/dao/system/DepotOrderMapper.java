@@ -2,10 +2,10 @@ package com.gameloft9.demo.dataaccess.dao.system;
 
 import com.gameloft9.demo.dataaccess.model.system.DepotOrderTest;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 public interface DepotOrderMapper {
+
     //获取id
     DepotOrderTest selectByPrimaryKey(String id);
 
@@ -16,10 +16,10 @@ public interface DepotOrderMapper {
     int insert(DepotOrderTest record);
 
     //删除
-    int deleteByPrimaryKey(String record);
+    int deleteByPrimaryKey(String id);
 
     //修改
-    int updateByPrimaryKey(DepotOrderTest record);
+    int update(DepotOrderTest record);
 
 
     /**

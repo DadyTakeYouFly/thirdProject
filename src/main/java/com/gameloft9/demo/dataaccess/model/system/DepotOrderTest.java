@@ -1,20 +1,27 @@
 package com.gameloft9.demo.dataaccess.model.system;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
+import javax.annotation.Generated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
-
+@Data
 public class DepotOrderTest {
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private String id;
     private Integer orderType;
     private String goodsId;
     private String goodsNumber;
     private String applyUser;
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date applyTime;
     private String state;
     private String orderAuditUser;
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date orderAuditTime;
     private String applyDescribe;
     private String auditDescribe;
@@ -35,7 +42,7 @@ public class DepotOrderTest {
                 ", auditDescribe='" + auditDescribe + '\'' +
                 '}';
     }
-
+/*
     public String getId() {
         return id;
     }
@@ -139,5 +146,5 @@ public class DepotOrderTest {
     }
 
     public DepotOrderTest() {
-    }
+    }*/
 }

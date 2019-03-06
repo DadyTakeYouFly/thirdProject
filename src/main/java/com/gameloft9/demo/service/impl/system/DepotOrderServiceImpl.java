@@ -2,11 +2,13 @@ package com.gameloft9.demo.service.impl.system;
 
 import com.gameloft9.demo.dataaccess.dao.system.DepotOrderMapper;
 import com.gameloft9.demo.dataaccess.model.system.DepotOrderTest;
+import com.gameloft9.demo.mgrframework.utils.CheckUtil;
 import com.gameloft9.demo.service.api.system.DepotOrderService;
 import com.gameloft9.demo.service.beans.system.PageRange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,13 +25,29 @@ public class DepotOrderServiceImpl implements DepotOrderService {
 
     //获取id
     public DepotOrderTest selectByPrimaryKey(String id) {
-        DepotOrderTest depotOrderTest = dao.selectByPrimaryKey(id);
-        return depotOrderTest;
+        CheckUtil.notBlank(id,"角色id为空");
+        return dao.selectByPrimaryKey(id);
     }
 
     //增加
-    public void insert(DepotOrderTest depotOrderTest) {
-        dao.insert(depotOrderTest);
+    public DepotOrderTest insert(String id, Integer orderType, String goodsId, String goodsNumber,
+                                 String applyUser, Date applyTime, String state,
+                                 String orderAuditUser, Date orderAuditTime, String applyDescribe,
+                                 String auditDescribe) {
+        DepotOrderTest depot = new DepotOrderTest();
+        depot.setId(id);
+        depot.setOrderType(orderType);
+        depot.setGoodsId(goodsId);
+        depot.setGoodsNumber(goodsNumber);
+        depot.setApplyUser(applyUser);
+        depot.setApplyTime(applyTime);
+        depot.setState(state);
+        depot.setOrderAuditUser(orderAuditUser);
+        depot.setOrderAuditTime(orderAuditTime);
+        depot.setApplyDescribe(applyDescribe);
+        depot.setAuditDescribe(auditDescribe);
+        dao.insert(depot);
+        return depot;
     }
 
     //删除
@@ -39,8 +57,22 @@ public class DepotOrderServiceImpl implements DepotOrderService {
     }
 
     //修改
-    public boolean updateByPrimaryKey(DepotOrderTest depotOrderTest) {
-        dao.updateByPrimaryKey(depotOrderTest);
+    public boolean update(String id, Integer orderType, String goodsId, String goodsNumber,
+                          String applyUser, Date applyTime, String state, String orderAuditUser,
+                          Date orderAuditTime, String applyDescribe, String auditDescribe) {
+        DepotOrderTest depot = new DepotOrderTest();
+        depot.setId(id);
+        depot.setOrderType(orderType);
+        depot.setGoodsId(goodsId);
+        depot.setGoodsNumber(goodsNumber);
+        depot.setApplyUser(applyUser);
+        depot.setApplyTime(applyTime);
+        depot.setState(state);
+        depot.setOrderAuditUser(orderAuditUser);
+        depot.setOrderAuditTime(orderAuditTime);
+        depot.setApplyDescribe(applyDescribe);
+        depot.setAuditDescribe(auditDescribe);
+        dao.update(depot);
         return true;
     }
 

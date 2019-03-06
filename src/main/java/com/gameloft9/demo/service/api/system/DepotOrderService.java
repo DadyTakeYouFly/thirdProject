@@ -2,6 +2,7 @@ package com.gameloft9.demo.service.api.system;
 import com.gameloft9.demo.dataaccess.model.system.DepotOrderTest;
 import com.gameloft9.demo.dataaccess.model.system.UserTest;
 
+import java.util.Date;
 import java.util.List;
 
 public interface DepotOrderService {
@@ -13,13 +14,19 @@ public interface DepotOrderService {
         DepotOrderTest selectByPrimaryKey(String id);
 
         //添加
-        void insert(DepotOrderTest depotOrderTest);
+        DepotOrderTest insert(String id, Integer orderType, String goodsId,
+                              String goodsNumber, String applyUser, Date applyTime, String state,
+                              String orderAuditUser, Date orderAuditTime, String applyDescribe,
+                              String auditDescribe);
 
         //删除
         boolean deleteByPrimaryKey(String id);
 
         //更新
-        boolean updateByPrimaryKey(DepotOrderTest depotOrderTest);
+        boolean update(String id, Integer orderType, String goodsId,
+                                   String goodsNumber, String applyUser, Date applyTime, String state,
+                                   String orderAuditUser, Date orderAuditTime, String applyDescribe,
+                                   String auditDescribe);
 
         /**
          * 获取所有角色
