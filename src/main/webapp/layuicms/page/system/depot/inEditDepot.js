@@ -39,17 +39,18 @@ layui.config({
 
         $api.GetDepot(req,function (res) {
             var data = res.data;
-            $("[name='id']").val(data.title);
-            $("[name='orderType']").val(data.title);
-            $("[name='goodsId']").val(data.title);
-            $("[name='goodsNumber']").val(data.title);
-            $("[name='applyUser']").val(data.title);
-            $("[name='applyTime']").val(data.date);
-            $("[name='state']").val(data.title);
-            $("[name='orderAuditUser']").val(data.title);
-            $("[name='orderAuditTime']").val(data.date);
-            $("[name='applyDescribe']").val(data.title);
-            $("[name='auditDescribe']").val(data.title);
+            console.log(data)
+            $("[name='id']").val(data.id);
+            $("[name='orderType']").val(data.orderType);
+            $("[name='goodsId']").val(data.goodsId);
+            $("[name='goodsNumber']").val(data.goodsNumber);
+            $("[name='applyUser']").val(data.applyUser);
+            $("[name='applyTime']").val(data.applyTime);
+            $("[name='state']").val(data.state);
+            $("[name='orderAuditUser']").val(data.orderAuditUser);
+            $("[name='orderAuditTime']").val(data.orderAuditTime);
+            $("[name='applyDescribe']").val(data.applyDescribe);
+            $("[name='auditDescribe']").val(data.auditDescribe);
             //depotIds = data.depotIds;//保存菜单所属角色id列表，初始化选中时用
             //加载角色列表
             loadRoleList();
@@ -92,7 +93,7 @@ layui.config({
      * 表单提交
      * */
     form.on("submit(editDepot)", function (data) {
-        var queryArgs = $tool.getQueryParam();//获取查询参数
+        //var queryArgs = $tool.getQueryParam();//获取查询参数
         var id = data.field.id;
         var orderType = data.field.orderType;
         var goodsId = data.field.goodsId;
@@ -116,7 +117,8 @@ layui.config({
         //请求
         var url = $tool.getContext()+'depot/order/update.do';
         var req = {
-            id:queryArgs['id'],
+            //id:queryArgs['id'],
+            id:id,
             orderType:orderType,
             goodsId:goodsId,
             goodsNumber:goodsNumber,
