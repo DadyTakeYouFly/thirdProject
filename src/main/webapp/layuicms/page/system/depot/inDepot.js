@@ -20,18 +20,23 @@ layui.config({
      * */
     function defineTable() {
         tableIns = table.render({
-            elem: '#role-data'
+            elem: '#depot-data'
             , height: 415
-            , url: $tool.getContext() + 'depot/inventory/list.do' //数据接口
+            , url: $tool.getContext() + 'depot/order/list.do' //数据接口
             , method: 'post'
             , page:true //开启分页
             , cols: [[ //表头
                   {type:'id',title:'订单单号',fixed: 'left'},
-                  {field: 'sourceUser', title: '申请人', width: '10%'}
-                , {field: 'userState', title: '用户身份', width: '10%',templet: '#tmp'}
-                , {field: 'sourceTime', title: '申请时间', width: '10%'}
-                , {field: 'createUser', title: '申请入库数量', width: '10%'}
-                , {field: 'state', title: '状态 盘点中/结束', width: '20%'}
+                  {field: 'orderType', title: '订单类型', width: '10%'}
+                , {field: 'goodsId', title: '原料/成品ID', width: '10%'}
+                , {field: 'goodsNumber', title: '货品数量', width: '10%'}
+                , {field: 'applyUser', title: '申请人', width: '10%'}
+                , {field: 'applyTime', title: '申请时间', width: '20%'}
+                , {field: 'state', title: '订单状态', width: '20%',templet: '#tmp'}
+                , {field: 'orderAuditUser', title: '审核人', width: '20%'}
+                , {field: 'orderAuditTime', title: '审核时间', width: '20%'}
+                , {field: 'applyDescribe', title: '申请描述', width: '20%'}
+                , {field: 'auditDescribe', title: '审核描述', width: '20%'}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调
@@ -57,16 +62,16 @@ layui.config({
     defineTable();
 
 
-    //查询
+    //查询  insepectId单号查询
     form.on("submit(queryRole)", function (data) {
-        var id = data.field.id;
-        var userState = data.field.userState;
+        var inspectId = data.field.inspectId;
+        var state = data.field.state;
 
         //表格重新加载
         tableIns.reload({
             where:{
-                id:id,
-                userState:userState
+                inspectId:inspectId,
+                state:state
             }
         });
 
@@ -78,7 +83,7 @@ layui.config({
         var index = layui.layer.open({
             title: "申请入库单",
             type: 2,
-            content: "addDepot.html",
+            content: "inAddDepot.html",
             success: function (layero, index) {
                 setTimeout(function () {
                     layui.layer.tips('点击此处返回入库单申请列表', '.layui-layer-setwin .layui-layer-close', {
@@ -101,7 +106,7 @@ layui.config({
             layer.close(confirmIndex);//关闭confirm
             //向服务端发送删除指令
             var req = {
-                roleId: id
+                id: id
             };
 
             $api.DeleteDepot(req,function (data) {

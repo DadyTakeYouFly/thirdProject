@@ -1,0 +1,7 @@
+
+qsquid:S00117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”Ã’¢8ûÅ¦ç”-
+rsquid:S001008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚û²³ÿÿÿÿÿ8ûÅ¦ç”-
+usquid:S001178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚û²³ÿÿÿÿÿ8ûÅ¦ç”-
+rsquid:S001004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãå‘ºøÿÿÿÿ8ûÅ¦ç”-
+ssquid:S00116	"TRename this field "iD_Number" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ÙÑÐ8Óÿ¥ç”-
+bsquid:S00107”"BConstructor has 13 parameters, which is greater than 7 authorized.(”Ã’¢8ûÅ¦ç”-

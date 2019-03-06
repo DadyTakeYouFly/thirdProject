@@ -20,17 +20,16 @@
         <div class="layui-inline">
             <label class="layui-form-label">单号查询</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="roleName" placeholder="请输入订单单号">
+                <input type="text" class="layui-input" name="inspectId" placeholder="请输入订单单号">
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">用户身份</label>
+            <label class="layui-form-label">订单状态</label>
             <div class="layui-input-block">
                 <select name="isSuper" >
                     <option value="">-----请选择-----</option>
-                    <option value="0">仓&nbsp;库&nbsp;主&nbsp;管</option>
-                    <option value="1">仓库管理人员</option>
-                    <option value="2">仓&nbsp;库&nbsp;员&nbsp;工</option>
+                    <option value="0">申请中</option>
+                    <option value="1">审核中</option>
                 </select>
             </div>
         </div>
@@ -38,14 +37,14 @@
             <a class="layui-btn search_btn" lay-submit="" lay-filter="queryRole">查询</a>
         </div>
         <div class="layui-inline">
-            <a class="layui-btn layui-btn-normal usersAdd_btn">申请入库单</a>
+            <a class="layui-btn layui-btn-normal usersAdd_btn">入库单申请</a>
         </div>
     </form>
 </blockquote>
 <!--表格区-->
 <div class="layui-form users_list">
     <!--通过lay-filter区分toolbar事件容器-->
-    <table id="role-data" lay-filter="roleFilter" class="layui-table">
+    <table id="depot-data" lay-filter="roleFilter" class="layui-table">
     </table>
 </div>
 <!--分页元素-->
@@ -59,11 +58,9 @@
 <!--用户身份-->
 <script type="text/html" id="tmp">
     {{#  if(d.isSuper === '0'){ }}
-       仓库主管
-    {{#  } else if(d.isSuper === '1'){ }}
-       仓库管理人员
+       申请中
     {{#  } else { }}
-        仓库员工
+       审核中
     {{#  } }}
 </script>
 

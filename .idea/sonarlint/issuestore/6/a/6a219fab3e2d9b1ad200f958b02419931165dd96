@@ -1,0 +1,19 @@
+
+[
+squid:S106A"9Replace this use of System.out or System.err by a logger.(ùÎª¤ýÿÿÿÿ8Ðõƒå”-
+ksquid:S4488*"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Û•ôûÿÿÿÿ8Çðïä”-
+hsquid:S44881"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ð‰Ñ”8Çðïä”-
+[
+squid:S106>"9Replace this use of System.out or System.err by a logger.(Ø°É¨øÿÿÿÿ8Ðõƒå”-
+[
+squid:S106U"9Replace this use of System.out or System.err by a logger.(õ¾¥áùÿÿÿÿ8Çðïä”-
+hsquid:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(È‹ôÊ8Çðïä”-
+[
+squid:S106-"9Replace this use of System.out or System.err by a logger.(Ò˜‡²øÿÿÿÿ8Çðïä”-
+zsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "list".(™ë¼¸8Çðïä”-
+ksquid:S44889"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ƒ°ÞÇùÿÿÿÿ8Çðïä”-
+[
+squid:S106X"9Replace this use of System.out or System.err by a logger.(™ÇßŒýÿÿÿÿ8Çðïä”-
+fsquid:S4488!"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(«Ùø·8Çðïä”-
+msquid:S4488P"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(þþŽ¢ÿÿÿÿÿ8Çðïä”-
+fsquid:S4488H"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Š“­¤8Çðïä”-

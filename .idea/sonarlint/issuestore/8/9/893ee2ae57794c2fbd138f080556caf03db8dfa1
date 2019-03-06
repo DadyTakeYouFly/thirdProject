@@ -1,0 +1,5 @@
+
+ksquid:S1192_"ODefine a constant instead of duplicating this literal "ç”¨æˆ·idä¸ºç©º" 3 times.(Æ•Î¤úÿÿÿÿ
+Dsquid:S1125."(Remove the literal "true" boolean value.(¥†ƒÂüÿÿÿÿ
+hsquid:S1149ù"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(“ãí
+Qsquid:S3516ï"9Refactor this method to not always return the same value.(§­Ñ

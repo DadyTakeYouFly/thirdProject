@@ -145,17 +145,18 @@ layui.define(['$tool','jquery'], function (exports) {
             doComplexPost($tool.getContext() + 'personCenter/update.do',req,config,successCallback,errorCallback);
         },
 
-        //inDepot仓库入库单-删除
+        //inDepot仓库订单
+        //删除
         DeleteDepot:function(req,successCallback,errorCallback){
-            doPost($tool.getContext()+'depot/inventory/delete.do',req,successCallback,errorCallback);
+            doPost($tool.getContext()+'depot/order/delete.do',req,successCallback,errorCallback);
         },
         //增加
-        AddDepot:function(req,successCallback,errorCallback){
-            doPost($tool.getContext()+'depot/inventory/insert.do',req,successCallback,errorCallback);
+        InAddDepot:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/order/insert.do',req,successCallback,errorCallback);
         },
         //审核
         InspectDepot:function(req,successCallback,errorCallback){
-            doPost($tool.getContext()+'depot/inventory/update.do',req,successCallback,errorCallback);
+            doPost($tool.getContext()+'depot/order/update.do',req,successCallback,errorCallback);
         },
     };
 

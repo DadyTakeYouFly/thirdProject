@@ -28,27 +28,75 @@
 <body class="childrenBody">
 <form class="layui-form" style="width:80%;" name="editRoleForm">
     <div class="layui-form-item">
+        <label class="layui-form-label">订单单号</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" readonly="readonly"  name="id" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">订单类型</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="orderType" readonly="readonly" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">原料/成品ID</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="goodsId" readonly="readonly" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">货品数量</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="goodsNumber" readonly="readonly" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
         <label class="layui-form-label">申请人</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="sourceUser" readonly="readonly" lay-verify="required">
+            <input type="text" class="layui-input" name="applyUser" readonly="readonly" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">申请时间</label>
         <div class="layui-input-block">
-            <input type="date" class="layui-input" name="sourceTime"  readonly="readonly" lay-verify="required">
+            <input type="date" class="layui-input" name="applyTime" readonly="readonly" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">申请入库数量</label>
+        <label class="layui-form-label">订单状态</label>
         <div class="layui-input-block">
-            <input type="date" class="layui-input" name="recordNumber" readonly="readonly" lay-verify="required">
+            <input type="text" class="layui-input" name="state" readonly="readonly" value="审核中" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核人</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="orderAuditUser" lay-verify="required" placeholder="请输入您的姓名">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核时间</label>
+        <div class="layui-input-block">
+            <input type="date" class="layui-input" name="orderAuditTime" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">申请描述</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="applyDescribe" readonly="readonly" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核描述</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="auditDescribe" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">是否通过审核</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="state" lay-skin="switch" lay-text="是|否" value="1">
+            <input type="checkbox" name="isSuper" lay-skin="switch" lay-text="是|否" value="1">
         </div>
     </div>
     <div class="layui-form-item">

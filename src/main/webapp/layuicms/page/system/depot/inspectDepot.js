@@ -39,24 +39,37 @@ layui.config({
      * 表单提交
      * */
     form.on("submit(editRole)", function (data) {
-        var sourceUser = data.field.sourceUser;
-        var sourceTime = data.field.sourceTime;
-        var recordNumber = data.field.recordNumber;
+        var id = data.field.id;
+        var orderType = data.field.orderType;
+        var goodsId = data.field.goodsId;
+        var goodsNumber = data.field.goodsNumber;
+        var applyUser = data.field.applyUser;
+        var applyTime = data.field.applyTime;
         var state = data.field.state;
+        var orderAuditUser = data.field.orderAuditUser;
+        var orderAuditTime = data.field.orderAuditTime;
+        var applyDescribe = data.field.applyDescribe;
+        var auditDescribe = data.field.auditDescribe;
         //isSuper = $tool.isBlank(isSuper)?'0':isSuper;
 
         var queryArgs = $tool.getQueryParam();//获取查询参数
 
         //请求
         var req = {
-            id:queryArgs['id'],
-            sourceUser:sourceUser,
-            sourceTime:sourceTime,
-            recordNumber:recordNumber,
-            state:state
+            id:id,
+            orderType:orderType,
+            goodsId:goodsId,
+            goodsNumber:goodsNumber,
+            applyUser:applyUser,
+            applyTime:applyTime,
+            state:state,
+            orderAuditUser:orderAuditUser,
+            orderAuditTime:orderAuditTime,
+            applyDescribe:applyDescribe,
+            auditDescribe:auditDescribe
         };
 
-        $api.UpdateRole(req,function (data) {
+        $api.InspectDepot(req,function (data) {
             layer.msg("修改成功！",{time:1000},function () {
                 layer.closeAll("iframe");
                 //刷新父页面
