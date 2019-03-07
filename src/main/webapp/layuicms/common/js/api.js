@@ -193,6 +193,31 @@ layui.define(['$tool','jquery'], function (exports) {
             doPost($tool.getContext()+'depot/order/update.do',req,config,successCallback,errorCallback);
         },
 
+        //totalCheck 库存盘点
+        //删除
+        totalDeletcCheck:function(req,successCallback,errorCallback){
+            doGet($tool.getContext()+'depot/check/delete.do',req,successCallback,errorCallback);
+        },
+        //增加
+        totalAddCheck:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'/depot/check/insert.do',req,successCallback,errorCallback);
+        },
+        //审核
+        totalInspectCheck:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/check/update.do',req,successCallback,errorCallback);
+        },
+        //修改 获取id
+        totalGetCheck:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/check/get.do',req,successCallback,errorCallback);
+        },
+        //修改 获取所有列表
+        totalGetCheckList:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'depot/check/list.do',req,successCallback,errorCallback);
+        },
+        //修改
+        totalUpdateCheck:function(req,config,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/order/update.do',req,config,successCallback,errorCallback);
+        },
     };
 
 

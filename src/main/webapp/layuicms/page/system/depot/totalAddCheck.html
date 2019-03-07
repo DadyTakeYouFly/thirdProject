@@ -28,34 +28,38 @@
 <body class="childrenBody">
 <form class="layui-form" style="width:80%;">
     <div class="layui-form-item">
-        <label class="layui-form-label">货品编号</label>
+        <label class="layui-form-label">订单编号</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input"  name="id" lay-verify="required" placeholder="请输入货品编号">
+            <input type="text" class="layui-input"  name="id" lay-verify="required" placeholder="请输入订单编号">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">货品类型</label>
+        <label class="layui-form-label">发起人</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="goodsType" lay-verify="required" placeholder="原料请输入1，成品请输入2">
-            <!--<input type="radio" name="goodsType" value="0" title="原料" checked>-->
-            <!--<input type="radio" name="goodsType" value="1" title="成品">-->
+            <input type="text" class="layui-input" name="sourceUser" lay-verify="required" placeholder="请输入您的名字">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">原料/成品ID</label>
+        <label class="layui-form-label">发起时间</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="goodsId" lay-verify="required" placeholder="请输入原料/成品ID">
+            <input type="date" class="layui-input" name="sourceTime" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">货品数量</label>
+        <label class="layui-form-label">记录数量</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="goodsNumber" lay-verify="required" placeholder="请输入货品数量">
+            <input type="text" class="layui-input" name="recordNumber" lay-verify="required" placeholder="请输入数量">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="stats" lay-verify="required" readonly="readonly" value="盘点中">
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="allAddDepot">提交申请</button>
+            <button class="layui-btn" lay-submit="" lay-filter="totalAddCheck">提交申请</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
@@ -64,6 +68,6 @@
 <!--一般情况下，一个业务页面引入一个layui.js,config.js和业务js这三个js就够了-->
 <script type="text/javascript" src="../../../lib/layui/layui.js"></script>
 <script type="text/javascript" src="../../../common/js/config.js"></script>
-<script type="text/javascript" src="allAddDepot.js"></script>
+<script type="text/javascript" src="totalAddCheck.js"></script>
 </body>
 </html>
