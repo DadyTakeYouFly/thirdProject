@@ -10,7 +10,7 @@ public interface DepotOrderMapper {
     DepotOrderTest selectByPrimaryKey(String id);
 
     //查询所有
-    List<DepotOrderTest> selectAll();
+    //List<DepotOrderTest> selectAll();
 
     //增加
     int insert(DepotOrderTest record);
@@ -30,14 +30,14 @@ public interface DepotOrderMapper {
     List<DepotOrderTest> selectAll(
             @Param("start") int start,
             @Param("end") int end,
-            @Param("orderType") String orderType,
+            @Param("orderType") Integer orderType,
             @Param("state") String state);
 
 
     /**
      * 获取所有角色个数
      * */
-    int countGetAll( @Param("orderType") String orderType,
+    int countGetAll( @Param("orderType") Integer orderType,
                      @Param("state") String state);
 
 }

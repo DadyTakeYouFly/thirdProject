@@ -3,7 +3,7 @@
 <mapper namespace="com.gameloft9.demo.dataaccess.dao.system.DepotOrderMapper">
     <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
         <id column="ID" property="id" jdbcType="VARCHAR"/>
-        <result column="ORDER_TYPE" property="orderType" />
+        <result column="ORDER_TYPE" property="orderType" jdbcType="INTEGER"/>
         <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
         <result column="GOODS_NUMBER" property="goodsNumber" jdbcType="VARCHAR"/>
         <result column="APPLY_USER" property="applyUser" jdbcType="VARCHAR"/>
@@ -60,7 +60,7 @@
         from t_depot_order t
         <where>
         <if test="orderType != null and orderType != ''">
-            and t.ID = #{id}
+            and t.ORDER_TYPE = #{orderType}
         </if>
         <if test="state != null and state != ''">
             and t.STATE = #{state}
@@ -72,13 +72,13 @@
         select * from t_depot_order t
         <where>
         <if test="orderType != null and orderType != ''">
-            and t.ID = #{id}
+            and t.ORDER_TYPE = #{orderType}
         </if>
         <if test="state != null and state != ''">
             and t.STATE = #{state}
         </if>
         </where>
-        order by t.ID asc
+        order by t.id asc
         limit #{start,jdbcType=DECIMAL},#{end,jdbcType=DECIMAL}
     </select>
 

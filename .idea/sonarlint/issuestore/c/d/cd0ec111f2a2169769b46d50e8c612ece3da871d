@@ -1,13 +1,0 @@
-
-9squid:S1643¿"Use a StringBuilder instead.(µí²çüÿÿÿÿ
-U
-squid:S106ä"9Replace this use of System.out or System.err by a logger.(éí÷„ùÿÿÿÿ
-P
-squid:S106æ"9Replace this use of System.out or System.err by a logger.(Äà¹í
-qsquid:S1488·"YImmediately return this expression instead of assigning it to the temporary variable "s".(ÊÃ¤¡
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úøøÿÿÿÿ
-=squid:S1170"!Make this final field static too.(¾¼„éıÿÿÿÿ
-Qsquid:S1854T"5Remove this useless assignment to local variable "l".(ú±óùÿÿÿÿ
-isquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ï‰š
-isquid:S00117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„éÚ¨
-jsquid:S00117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ÕÁ

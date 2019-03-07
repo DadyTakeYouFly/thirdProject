@@ -32,25 +32,18 @@ layui.config({
         var queryArgs = $tool.getQueryParam();//获取查询参数
         var id = queryArgs['id'];
 
-        var url = $tool.getContext()+'depot/order/get.do';
+        var url = $tool.getContext()+'depot/inventory/get.do';
         var req = {
             id:id
         };
 
-        $api.getDepot(req,function (res) {
+        $api.allGetDepot(req,function (res) {
             var data = res.data;
             console.log(data)
             $("[name='id']").val(data.id);
-            $("[name='orderType']").val(data.orderType);
+            $("[name='goodsType']").val(data.goodsType);
             $("[name='goodsId']").val(data.goodsId);
             $("[name='goodsNumber']").val(data.goodsNumber);
-            $("[name='applyUser']").val(data.applyUser);
-            $("[name='applyTime']").val(data.applyTime);
-            $("[name='state']").val(data.state);
-            $("[name='orderAuditUser']").val(data.orderAuditUser);
-            $("[name='orderAuditTime']").val(data.orderAuditTime);
-            $("[name='applyDescribe']").val(data.applyDescribe);
-            $("[name='auditDescribe']").val(data.auditDescribe);
             //depotIds = data.depotIds;//保存菜单所属角色id列表，初始化选中时用
             //加载角色列表
             loadRoleList();
@@ -62,13 +55,13 @@ layui.config({
      * 加载角色列表
      * */
     function loadRoleList() {
-        var url = $tool.getContext()+'depot/order/list.do';
+        var url = $tool.getContext()+'depot/inventory/list.do';
         var req =  {
             page:1,
-            limit:999
+            limit:10
         };
 
-        $api.getDepotList(req,function (res) {
+        $api.allGetDepotList(req,function (res) {
             var data = res.data;
             if(data.length > 0){
                 var depotHtml = "";
@@ -89,22 +82,20 @@ layui.config({
         });
     }
 
+    /*form.on('radio(orgTypeFilter)', function (data) {
+        //console.log(data.elem); //得到radio原始DOM对象
+        var goodsType = data.goodsType;
+    });*/
+
     /**
      * 表单提交
      * */
     form.on("submit(editDepot)", function (data) {
         //var queryArgs = $tool.getQueryParam();//获取查询参数
         var id = data.field.id;
-        var orderType = data.field.orderType;
+        var goodsType = data.field.goodsType;
         var goodsId = data.field.goodsId;
         var goodsNumber = data.field.goodsNumber;
-        var applyUser = data.field.applyUser;
-        var applyTime = data.field.applyTime;
-        var state = data.field.state;
-        var orderAuditUser = data.field.orderAuditUser;
-        var orderAuditTime = data.field.orderAuditTime;
-        var applyDescribe = data.field.applyDescribe;
-        var auditDescribe = data.field.auditDescribe;
         var idList = new Array();
 
         //获取选中的角色列表
@@ -115,24 +106,16 @@ layui.config({
         }
 
         //请求
-        var url = $tool.getContext()+'depot/order/update.do';
+        var url = $tool.getContext()+'depot/inventory/update.do';
         var req = {
             //id:queryArgs['id'],
             id:id,
-            orderType:orderType,
+            goodsType:goodsType,
             goodsId:goodsId,
             goodsNumber:goodsNumber,
-            applyUser:applyUser,
-            applyTime:applyTime,
-            state:state,
-            orderAuditUser:orderAuditUser,
-            orderAuditTime:orderAuditTime,
-            applyDescribe:applyDescribe,
-            auditDescribe:auditDescribe,
-            depotIdList:idList
         };
 
-        $api.updateDepot(req,function (data) {
+        $api.allUpdateDepot(req,function (data) {
             layer.msg("修改成功！",{time:1000},function () {
                 layer.closeAll("iframe");
                 //刷新父页面

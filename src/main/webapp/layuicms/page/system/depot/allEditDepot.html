@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>订单编辑</title>
+    <title>库存管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -28,15 +28,17 @@
 <body class="childrenBody">
 <form class="layui-form" style="width:80%;" name="editDepotForm">
     <div class="layui-form-item">
-        <label class="layui-form-label">订单单号</label>
+        <label class="layui-form-label">货品编号</label>
         <div class="layui-input-block">
             <input type="text" class="layui-input"  name="id" readonly="readonly" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">订单类型</label>
+        <label class="layui-form-label">货品类型</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="orderType" lay-verify="required" placeholder="请输入订单类型">
+                <input type="text" class="layui-input" name="goodsType" lay-verify="required" placeholder="原料请输入1，成品请输入2">
+            <!--<input type="radio" name="goodsType" value="0" title="原料" checked>-->
+            <!--<input type="radio" name="goodsType" value="1" title="成品">-->
         </div>
     </div>
     <div class="layui-form-item">
@@ -52,48 +54,6 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">申请人</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" name="applyUser" lay-verify="required" placeholder="请输入您的名字">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">申请时间</label>
-        <div class="layui-input-block">
-            <input type="date" class="layui-input" name="applyTime" lay-verify="required">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">订单状态</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" name="state" readonly="readonly" value="申请中" lay-verify="required">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">审核人</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" name="orderAuditUser" readonly="readonly" value="待定" lay-verify="required">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">审核时间</label>
-        <div class="layui-input-block">
-            <input type="date" class="layui-input" name="orderAuditTime"  lay-verify="required">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">申请描述</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" name="applyDescribe" lay-verify="required" placeholder="请输入申请描述">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">审核描述</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" name="auditDescribe" readonly="readonly" value="待审核人填写" lay-verify="required">
-        </div>
-    </div>
-    <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit="" lay-filter="editDepot">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -104,6 +64,6 @@
 <!--一般情况下，一个业务页面引入一个layui.js,config.js和业务js这三个js就够了-->
 <script type="text/javascript" src="../../../lib/layui/layui.js"></script>
 <script type="text/javascript" src="../../../common/js/config.js"></script>
-<script type="text/javascript" src="inEditDepot.js"></script>
+<script type="text/javascript" src="allEditDepot.js"></script>
 </body>
 </html>

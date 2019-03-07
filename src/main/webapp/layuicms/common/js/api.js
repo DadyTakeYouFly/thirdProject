@@ -145,29 +145,51 @@ layui.define(['$tool','jquery'], function (exports) {
             doComplexPost($tool.getContext() + 'personCenter/update.do',req,config,successCallback,errorCallback);
         },
 
-        //inDepot仓库订单
+        //allDepot仓库库存
         //删除
-        DeleteDepot:function(req,successCallback,errorCallback){
+        allDeleteDepot:function(req,successCallback,errorCallback){
+            doGet($tool.getContext()+'depot/inventory/delete.do',req,successCallback,errorCallback);
+        },
+        //增加
+        allAddDepot:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'/depot/inventory/insert.do',req,successCallback,errorCallback);
+        },
+        //修改 获取id
+        allGetDepot:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/inventory/get.do',req,successCallback,errorCallback);
+        },
+        //修改 获取所有列表
+        allGetDepotList:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'depot/inventory/list.do',req,successCallback,errorCallback);
+        },
+        //修改
+        allUpdateDepot:function(req,config,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/inventory/update.do',req,config,successCallback,errorCallback);
+        },
+
+        //inAllDepot仓库入库单
+        //删除
+        deleteDepot:function(req,successCallback,errorCallback){
             doGet($tool.getContext()+'depot/order/delete.do',req,successCallback,errorCallback);
         },
         //增加
-        InAddDepot:function(req,successCallback,errorCallback){
+        addDepot:function(req,successCallback,errorCallback){
             doPost($tool.getContext()+'/depot/order/insert.do',req,successCallback,errorCallback);
         },
         //审核
-        InspectDepot:function(req,successCallback,errorCallback){
+        inspectDepot:function(req,successCallback,errorCallback){
             doPost($tool.getContext()+'depot/order/update.do',req,successCallback,errorCallback);
         },
         //修改 获取id
-        GetDepot:function(req,successCallback,errorCallback){
-            doGet($tool.getContext()+'depot/order/get.do',req,successCallback,errorCallback);
+        getDepot:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/order/get.do',req,successCallback,errorCallback);
         },
         //修改 获取所有列表
-        GetDepotList:function(req,successCallback,errorCallback){
+        getDepotList:function(req,successCallback,errorCallback){
             doPost($tool.getContext() + 'depot/order/list.do',req,successCallback,errorCallback);
         },
         //修改
-        UpdateDepot:function(req,config,successCallback,errorCallback){
+        updateDepot:function(req,config,successCallback,errorCallback){
             doPost($tool.getContext()+'depot/order/update.do',req,config,successCallback,errorCallback);
         },
 

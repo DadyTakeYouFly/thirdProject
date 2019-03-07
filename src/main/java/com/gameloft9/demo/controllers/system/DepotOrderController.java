@@ -42,12 +42,12 @@ public class DepotOrderController {
     /*获取所有资料*/
     @RequestMapping(value="/list.do",method = RequestMethod.POST)
     @ResponseBody
-    public IResult selectAll(String page, String limit,String orderType,String state){
+    public IResult selectAll(String page, String limit,Integer orderType,String state){
         return new PageResultBean<Collection<DepotOrderTest>>(service.getAll(page,limit,orderType,state),service.countGetAll(orderType,state));
     }
 
     /*根据id获取该id数据*/
-    @RequestMapping(value = "/get.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/get.do",method = RequestMethod.POST)
     @ResponseBody
     public IResult selectByPrimaryKey(String id){
        return new ResultBean<DepotOrderTest>(service.selectByPrimaryKey(id));

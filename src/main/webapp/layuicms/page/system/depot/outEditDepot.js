@@ -39,7 +39,6 @@ layui.config({
 
         $api.getDepot(req,function (res) {
             var data = res.data;
-            console.log(data)
             $("[name='id']").val(data.id);
             $("[name='orderType']").val(data.orderType);
             $("[name='goodsId']").val(data.goodsId);
@@ -65,7 +64,7 @@ layui.config({
         var url = $tool.getContext()+'depot/order/list.do';
         var req =  {
             page:1,
-            limit:999
+            limit:10
         };
 
         $api.getDepotList(req,function (res) {
@@ -115,7 +114,7 @@ layui.config({
         }
 
         //请求
-        var url = $tool.getContext()+'depot/order/update.do';
+        var url = $tool.getContext()+'depot/outOrder/update.do';
         var req = {
             //id:queryArgs['id'],
             id:id,

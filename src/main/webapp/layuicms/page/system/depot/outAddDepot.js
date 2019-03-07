@@ -15,7 +15,7 @@ layui.config({
     /**
      * 表单提交
      * */
-    form.on("submit(inAddDepot)", function (data) {
+    form.on("submit(outAddDepot)", function (data) {
         var id = data.field.id;
         var orderType = data.field.orderType;
         var goodsId = data.field.goodsId;
@@ -49,7 +49,7 @@ layui.config({
 
         $api.addDepot(req,function (data) {
             //top.layer.close(index);(关闭遮罩已经放在了ajaxExtention里面了)
-            layer.msg("角色添加成功！",{time:1000},function () {
+            layer.msg("出库单添加成功！",{time:1000},function () {
                 layer.closeAll("iframe");
                 //刷新父页面
                 parent.location.reload();
