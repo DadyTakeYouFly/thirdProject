@@ -63,12 +63,12 @@
             <input type="date" class="layui-input" name="applyTime" readonly="readonly" lay-verify="required">
         </div>
     </div>
-    <div class="layui-form-item">
+    <!--<div class="layui-form-item">
         <label class="layui-form-label">订单状态</label>
         <div class="layui-input-block">
             <input type="text" class="layui-input" name="state" readonly="readonly" value="审核中" lay-verify="required">
         </div>
-    </div>
+    </div>-->
     <div class="layui-form-item">
         <label class="layui-form-label">审核人</label>
         <div class="layui-input-block">
@@ -94,9 +94,14 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">是否通过审核</label>
+       <!-- <label class="layui-form-label">是否通过审核</label>
         <div class="layui-input-block">
             <input type="checkbox" name="isSuper" lay-skin="switch" lay-text="是|否" value="1">
+        </div>-->
+        <label class="layui-form-label">审核结果</label>
+        <div class="layui-input-block">
+            <input type="radio" name="state" title="审核中"checked>
+            <input type="radio" name="state" title="审核通过">
         </div>
     </div>
     <div class="layui-form-item">

@@ -65,7 +65,7 @@ layui.config({
         var url = $tool.getContext()+'depot/order/list.do';
         var req =  {
             page:1,
-            limit:999
+            limit:10
         };
 
         $api.getDepotList(req,function (res) {

@@ -20,7 +20,7 @@ layui.config({
         var sourceUser = data.field.sourceUser;
         var sourceTime = data.field.sourceTime;
         var recordNumber = data.field.recordNumber;
-        var stats = data.field.stats;
+        var state = data.field.state;
 
         //请求
         var req = {
@@ -28,7 +28,7 @@ layui.config({
             sourceUser:sourceUser,
             sourceTime:sourceTime,
             recordNumber:recordNumber,
-            stats:stats
+            state:state
         };
 
         $api.totalAddCheck(req,function (data) {

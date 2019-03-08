@@ -30,14 +30,14 @@ public interface DepotOrderMapper {
     List<DepotOrderTest> selectAll(
             @Param("start") int start,
             @Param("end") int end,
-            @Param("orderType") Integer orderType,
-            @Param("state") String state);
+            @Param("orderType") Integer orderType);
+            //@Param("state") String state
 
 
     /**
      * 获取所有角色个数
      * */
-    int countGetAll( @Param("orderType") Integer orderType,
-                     @Param("state") String state);
+    int countGetAll( @Param("orderType") Integer orderType);
+                     //@Param("state") String state
 
 }

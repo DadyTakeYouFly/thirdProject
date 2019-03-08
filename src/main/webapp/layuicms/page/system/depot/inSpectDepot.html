@@ -63,12 +63,12 @@
             <input type="date" class="layui-input" name="applyTime" readonly="readonly" lay-verify="required">
         </div>
     </div>
-    <div class="layui-form-item">
+    <!--<div class="layui-form-item">
         <label class="layui-form-label">订单状态</label>
         <div class="layui-input-block">
             <input type="text" class="layui-input" name="state" readonly="readonly" value="审核中" lay-verify="required">
         </div>
-    </div>
+    </div>-->
     <div class="layui-form-item">
         <label class="layui-form-label">审核人</label>
         <div class="layui-input-block">
@@ -90,18 +90,23 @@
     <div class="layui-form-item">
         <label class="layui-form-label">审核描述</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="auditDescribe" lay-verify="required">
+            <input type="text" class="layui-input" name="auditDescribe" lay-verify="required" placeholder="请输入审核的描述">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">是否通过审核</label>
+        <!--<label class="layui-form-label">审核结果</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="isSuper" lay-skin="switch" lay-text="是|否" value="1">
+            <input type="checkbox" name="isSuccess" lay-skin="switch" lay-text="审核通过|审核中" value="1">
+        </div>-->
+        <label class="layui-form-label">审核结果</label>
+        <div class="layui-input-block">
+            <input type="radio" name="state" title="审核中"checked>
+            <input type="radio" name="state" title="审核通过">
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="editRole">提交审核</button>
+            <button class="layui-btn" lay-submit="" lay-filter="editDepot">提交审核</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
@@ -110,6 +115,6 @@
 <!--一般情况下，一个业务页面引入一个layui.js,config.js和业务js这三个js就够了-->
 <script type="text/javascript" src="../../../lib/layui/layui.js"></script>
 <script type="text/javascript" src="../../../common/js/config.js"></script>
-<script type="text/javascript" src="editRole.js"></script>
+<script type="text/javascript" src="inSpectDepot.js"></script>
 </body>
 </html>

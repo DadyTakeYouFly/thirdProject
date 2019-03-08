@@ -129,12 +129,12 @@ layui.config({
                 }, 500)
             }
         });
-    }
 
-    //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
-    $(window).resize(function () {
+        //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
+        $(window).resize(function () {
+            layui.layer.full(index);
+        });
         layui.layer.full(index);
-    });
-    layui.layer.full(index);
+    }
 
 });

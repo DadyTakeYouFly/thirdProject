@@ -49,7 +49,7 @@ layui.config({
 
         $api.addDepot(req,function (data) {
             //top.layer.close(index);(关闭遮罩已经放在了ajaxExtention里面了)
-            layer.msg("角色添加成功！",{time:1000},function () {
+            layer.msg("库存货品添加成功！",{time:1000},function () {
                 layer.closeAll("iframe");
                 //刷新父页面
                 parent.location.reload();

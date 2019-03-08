@@ -62,9 +62,6 @@
         <if test="orderType != null and orderType != ''">
             and t.ORDER_TYPE = #{orderType}
         </if>
-        <if test="state != null and state != ''">
-            and t.STATE = #{state}
-        </if>
         </where>
     </select>
     <!--分页的查找所有-->
@@ -73,9 +70,6 @@
         <where>
         <if test="orderType != null and orderType != ''">
             and t.ORDER_TYPE = #{orderType}
-        </if>
-        <if test="state != null and state != ''">
-            and t.STATE = #{state}
         </if>
         </where>
         order by t.id asc

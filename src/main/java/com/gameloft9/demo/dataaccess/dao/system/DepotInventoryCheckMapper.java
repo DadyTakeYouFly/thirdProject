@@ -1,6 +1,7 @@
 package com.gameloft9.demo.dataaccess.dao.system;
 
 import com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckTest;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface DepotInventoryCheckMapper {
     DepotInventoryCheckTest selectByPrimaryKey(String id);
 
     //查询所有
-    List<DepotInventoryCheckTest> selectAll();
+    //List<DepotInventoryCheckTest> selectAll();
 
     //增加
     int insert(DepotInventoryCheckTest record);
@@ -19,5 +20,21 @@ public interface DepotInventoryCheckMapper {
     int deleteByPrimaryKey(String id);
 
     //修改
-    int updateByPrimaryKey(DepotInventoryCheckTest record);
+    int update(DepotInventoryCheckTest record);
+
+    /**
+     * 获取所有角色
+     * @param start 开始
+     * @param end 结束
+     * */
+    List<DepotInventoryCheckTest> selectAll(
+            @Param("start") int start,
+            @Param("end") int end,
+            @Param("id") String id);
+
+
+    /**
+     * 获取所有角色个数
+     * */
+    int countGetAll( @Param("id") String id);
 }

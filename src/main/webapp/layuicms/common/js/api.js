@@ -203,9 +203,9 @@ layui.define(['$tool','jquery'], function (exports) {
             doPost($tool.getContext()+'/depot/check/insert.do',req,successCallback,errorCallback);
         },
         //审核
-        totalInspectCheck:function(req,successCallback,errorCallback){
+        /*totalInspectCheck:function(req,successCallback,errorCallback){
             doPost($tool.getContext()+'depot/check/update.do',req,successCallback,errorCallback);
-        },
+        },*/
         //修改 获取id
         totalGetCheck:function(req,successCallback,errorCallback){
             doPost($tool.getContext()+'depot/check/get.do',req,successCallback,errorCallback);
@@ -218,6 +218,31 @@ layui.define(['$tool','jquery'], function (exports) {
         totalUpdateCheck:function(req,config,successCallback,errorCallback){
             doPost($tool.getContext()+'depot/order/update.do',req,config,successCallback,errorCallback);
         },
+
+        //uselessDepot库存报废
+        //删除
+        listDeleteUseless:function(req,successCallback,errorCallback){
+            doGet($tool.getContext()+'depot/useless/delete.do',req,successCallback,errorCallback);
+        },
+        //增加
+        listAddUseless:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'/depot/useless/insert.do',req,successCallback,errorCallback);
+        },
+        //修改 获取id
+        listGetUseless:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/useless/get.do',req,successCallback,errorCallback);
+        },
+        //修改 获取所有列表
+        listGetUselessList:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'depot/useless/list.do',req,successCallback,errorCallback);
+        },
+        //修改
+        listUpdateUseless:function(req,config,successCallback,errorCallback){
+            doPost($tool.getContext()+'depot/useless/update.do',req,config,successCallback,errorCallback);
+        },
+
+
+
     };
 
 

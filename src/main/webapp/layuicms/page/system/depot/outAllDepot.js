@@ -38,7 +38,7 @@ layui.config({
                 , {field: 'orderAuditTime', title: '审核时间', width: '12%'}
                 , {field: 'applyDescribe', title: '申请描述', width: '12%'}
                 , {field: 'auditDescribe', title: '审核描述', width: '12%'}
-                , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+                , {fixed: 'right', title: '操作', width: 250, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调
             // 如果是异步请求数据方式，res即为你接口返回的信息.curr：当前页码
@@ -58,9 +58,9 @@ layui.config({
                 //do something
                 editDepot(row.id);
             }
-            //else (layEvent === 'inspect'){  //审核
-            //inspectDepot(row.id);
-            //}
+            else{  //审核
+                inspectDepot(row.id);
+            }
         });
     }
     defineTable();
@@ -124,27 +124,34 @@ layui.config({
     }
 
     //审核
-    // function outspectDepot(id){
-    //     var index = layui.layer.open({
-    //         title: "审核订单",
-    //         type: 2,
-    //         content: "inspectDepot.html?id="+id,
-    //         success: function (layero, index) {
-    //             setTimeout(function () {
-    //                 layui.layer.tips('点击此处返回入库单列表', '.layui-layer-setwin .layui-layer-close', {
-    //                     tips: 3
-    //                 });
-    //             }, 500)
-    //         }
-    //     });
+    function inspectDepot(id) {
+        var index = layui.layer.open({
+            title: "审核订单",
+            type: 2,
+            content: "inSpectDepot.html?id=" + id,
+            success: function (layero, index) {
+                setTimeout(function () {
+                    layui.layer.tips('点击此处返回出库单列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                }, 500)
+            }
+        });
+
+        //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
+        $(window).resize(function () {
+            layui.layer.full(index);
+        });
+        layui.layer.full(index);
+    }
 
     //修改
-    function editDepot(id){
+    function editDepot(id) {
         var index = layui.layer.open({
-            title:"修改订单",
-            type:2,
-            content:"outEditDepot.html?id="+id,
-            success: function (layero,index) {
+            title: "修改订单",
+            type: 2,
+            content: "outEditDepot.html?id=" + id,
+            success: function (layero, index) {
                 setTimeout(function () {
                     layui.layer.tips('点击此处返回出库单列表', '.layui-layer-swtwin .layui-layer-close', {
                         tips: 3
@@ -152,12 +159,12 @@ layui.config({
                 }, 500)
             }
         });
-    }
+
 
         //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
         $(window).resize(function () {
             layui.layer.full(index);
         });
         layui.layer.full(index);
-
+        }
     });

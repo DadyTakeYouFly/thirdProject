@@ -33,12 +33,12 @@ public interface DepotOrderService {
          * @param page 页序
          * @param limit 分页大小
          * */
-        List<DepotOrderTest> getAll(String page, String limit, Integer orderType, String state);
+        List<DepotOrderTest> getAll(String page, String limit, Integer orderType);
 
         /**
          * 获取所有角色个数
          * */
-        int countGetAll(Integer orderType,String state);
+        int countGetAll(Integer orderType);
 
 
 }

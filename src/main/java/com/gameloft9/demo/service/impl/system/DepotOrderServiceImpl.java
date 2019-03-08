@@ -79,16 +79,16 @@ public class DepotOrderServiceImpl implements DepotOrderService {
     /**
      * 获取所有角色
      * */
-    public List<DepotOrderTest> getAll(String page, String limit, Integer orderType, String state){
+    public List<DepotOrderTest> getAll(String page, String limit, Integer orderType){
         PageRange pageRange = new PageRange(page,limit);
-        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),orderType,state);
+        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),orderType);
     }
 
     /**
      * 获取所有角色个数
      * */
-    public int countGetAll(Integer orderType,String state){
-        return dao.countGetAll(orderType,state);
+    public int countGetAll(Integer orderType){
+        return dao.countGetAll(orderType);
     }
 
 

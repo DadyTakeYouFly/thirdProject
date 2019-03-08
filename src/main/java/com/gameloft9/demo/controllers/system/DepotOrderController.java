@@ -42,8 +42,8 @@ public class DepotOrderController {
     /*获取所有资料*/
     @RequestMapping(value="/list.do",method = RequestMethod.POST)
     @ResponseBody
-    public IResult selectAll(String page, String limit,Integer orderType,String state){
-        return new PageResultBean<Collection<DepotOrderTest>>(service.getAll(page,limit,orderType,state),service.countGetAll(orderType,state));
+    public IResult selectAll(String page, String limit,Integer orderType){
+        return new PageResultBean<Collection<DepotOrderTest>>(service.getAll(page,limit,orderType),service.countGetAll(orderType));
     }
 
     /*根据id获取该id数据*/
@@ -72,7 +72,6 @@ public class DepotOrderController {
     }
 
     /*修改库存*/
-    /*先获取要修改商品的id，再进行修改*/
     @RequestMapping(value = "/update.do",method = RequestMethod.POST)
     @ResponseBody
     public IResult updateId(String id, Integer orderType, String goodsId,

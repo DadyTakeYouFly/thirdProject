@@ -31,7 +31,7 @@ layui.config({
                 , {field: 'sourceUser', title: '发起人', width: '8%'}
                 , {field: 'sourceTime', title: '发起时间', width: '12%'}
                 , {field: 'recordNumber', title: '记录数量', width: '8%'}
-                , {field: 'stats', title: '状态 盘点中/结束', width: '15%'}
+                , {field: 'state', title: '状态 盘点中/结束', width: '15%'}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调
@@ -62,13 +62,13 @@ layui.config({
 
     //查询  insepectId单号查询
     form.on("submit(queryDepot)", function (data) {
-        var goodsType = data.field.goodsType;
+        var id = data.field.id;
 
 
         //表格重新加载
         tableIns.reload({
             where:{
-                goodsType:goodsType,
+                id:id,
             }
         });
 
@@ -106,7 +106,7 @@ layui.config({
                 id: id
             };
 
-            $api.totalDeleteDepot(req,function (data) {
+            $api.totalDeletcCheck(req,function (data) {
                 layer.msg("删除成功",{time:1000},function(){
                     //obj.del(); //删除对应行（tr）的DOM结构
                     //重新加载表格
@@ -130,12 +130,13 @@ layui.config({
                 }, 500)
             }
         });
+        //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
+        $(window).resize(function () {
+            layui.layer.full(index);
+        });
+        layui.layer.full(index);
     }
 
-    //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
-    $(window).resize(function () {
-        layui.layer.full(index);
-    });
-    layui.layer.full(index);
+
 
 });
