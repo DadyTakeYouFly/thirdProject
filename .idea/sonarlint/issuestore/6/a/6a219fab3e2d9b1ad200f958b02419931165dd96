@@ -1,0 +1,9 @@
+
+msquid:UselessImportCheck"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…8¦êÜÈ•-
+dsquid:S4488>"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ƒ°ÞÇùÿÿÿÿ
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8È©ÊÈ•-
+asquid:S4488)"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(È‹ôÊ
+isquid:UselessImportCheck"?Remove this unused import 'com.gameloft9.demo.utils.ResultMap'.(êÝ÷>8Ê‰ÛÈ•-
+asquid:S44887"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ð‰Ñ”
+asquid:S44880"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(žÉØç
+fsquid:S4488E"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(þþŽ¢ÿÿÿÿÿ

@@ -1,0 +1,8 @@
+
+]javascript:UnusedVariable
+"8Remove the declaration of the unused 'laypage' variable.(ĞÏ¦
+[javascript:UnusedVariable"6Remove the declaration of the unused '$tool' variable.(î¯¢Í
+Tjavascript:S1854"8Remove this useless assignment to local variable "$tool"(î¯¢Í
+Vjavascript:S1854
+":Remove this useless assignment to local variable "laypage"(ĞÏ¦
+zjavascript:S2703!"^Add the "let", "const" or "var" keyword to this declaration of "orgNodes" to make it explicit.(Ä‘­
