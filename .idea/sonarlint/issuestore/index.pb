@@ -161,3 +161,13 @@ n
 >src/main/webapp/layuicms/page/system/depot/listAddUseless.html,c\2\c28c8159e0b813d02b7fe1c664d1cf6722c564eb
 l
 <src/main/webapp/layuicms/page/system/depot/listAddUseless.js,3\f\3fec4a9fe0da1b93e52420d1bced74eca93bdae1
+]
+-src/main/webapp/layuicms/common/js/bodyTab.js,9\e\9e25552ed1f92f4ad37d8fdbf03c838136546c0a
+g
+7src/main/resources/mapper/DepotInventoryCheckMapper.xml,4\a\4a064f810496bddbcfa4421130332bde6f0a625a
+`
+0src/main/resources/mapper/DepotUselessMapper.xml,a\a\aa1e7c51e14d15da9e8760d2582477730490f613
+r
+Bsrc/main/webapp/layuicms/page/system/depot/listInspectUseless.html,b\1\b1b7695da895c4763708a4103457f6ecc38930ce
+p
+@src/main/webapp/layuicms/page/system/depot/listInspectUseless.js,9\1\91fb4b0c15c1f27c5a6a23a3877e689f6bbd7ef8

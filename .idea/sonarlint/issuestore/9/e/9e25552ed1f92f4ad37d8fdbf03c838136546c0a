@@ -1,0 +1,11 @@
+
+ijavascript:S2814n"HRename "curmenu" as this name is already used in declaration at line 97.(˜ë¹Êûÿÿÿÿ
+>javascript:S1116‚"Remove this empty statement.(¾ˆ ´ùÿÿÿÿ
+[javascript:UnusedVariable"6Remove the declaration of the unused '_this' variable.(É÷ìŸ
+`javascript:UnusedVariable}";Remove the declaration of the unused 'topTabsBox' variable.(æÌ“ß
+ajavascript:UnusedVariableD"7Remove the declaration of the unused 'closed' variable.(ÏÉÇšüÿÿÿÿ
+`javascript:UnusedVariable"5Remove the declaration of the unused 'self' variable.(‚Ì¡‘üÿÿÿÿ
+Tjavascript:S1854"8Remove this useless assignment to local variable "_this"(É÷ìŸ
+Zjavascript:S1854D"9Remove this useless assignment to local variable "closed"(ÏÉÇšüÿÿÿÿ
+Yjavascript:S1854}"=Remove this useless assignment to local variable "topTabsBox"(æÌ“ß
+Yjavascript:S1854"7Remove this useless assignment to local variable "self"(‚Ì¡‘üÿÿÿÿ

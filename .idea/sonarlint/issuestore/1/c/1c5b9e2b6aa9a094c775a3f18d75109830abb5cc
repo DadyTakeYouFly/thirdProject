@@ -1,3 +1,5 @@
 
-bsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(†ŒÃ¤
+bsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(†ŒÃ¤
 …squid:UselessImportCheck"ZRemove this unused import 'com.gameloft9.demo.dataaccess.model.system.DepotInventoryTest'.(æÉÂ8Îõ²á•-
+asquid:S00107"=Method has 11 parameters, which is greater than 7 authorized.(ô‚€îüÿÿÿÿ8Ô²Òã•-
+asquid:S00107"=Method has 11 parameters, which is greater than 7 authorized.(à¸§¸ûÿÿÿÿ8ù÷Ñã•-

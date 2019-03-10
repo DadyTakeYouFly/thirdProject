@@ -241,7 +241,23 @@ layui.define(['$tool','jquery'], function (exports) {
             doPost($tool.getContext()+'depot/useless/update.do',req,config,successCallback,errorCallback);
         },
 
-
+        //iolist 订单库存一览表
+        //删除
+        ioDelete:function(req,successCallback,errorCallback){
+            doGet($tool.getContext()+'iolist/delete.do',req,successCallback,errorCallback);
+        },
+        //修改 获取id
+        ioGet:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'iolist/get.do',req,successCallback,errorCallback);
+        },
+        //修改 获取所有列表
+        ioGetList:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'iolist/list.do',req,successCallback,errorCallback);
+        },
+        //修改
+        ioUpdate:function(req,config,successCallback,errorCallback){
+            doPost($tool.getContext()+'iolist/update.do',req,config,successCallback,errorCallback);
+        },
 
     };
 

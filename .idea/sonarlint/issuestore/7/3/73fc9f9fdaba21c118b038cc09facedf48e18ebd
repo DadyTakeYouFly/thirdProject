@@ -1,8 +1,8 @@
 
-fsquid:S44888"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(şş¢ÿÿÿÿÿ
-asquid:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(È‹ôÊ
-asquid:S4488*"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ğ‰Ñ”
-dsquid:S44881"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ƒ°ŞÇùÿÿÿÿ
+dsquid:S4488E"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ƒ°ŞÇùÿÿÿÿ
 ˆsquid:UselessImportCheck"XRemove this unused import 'com.gameloft9.demo.service.api.system.DepotInventoryService'.(÷Ë‚ıÿÿÿÿ8½Èá•-
-asquid:S4488#"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÉØç
+asquid:S44883"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÉØç
+asquid:S4488,"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(È‹ôÊ
 …squid:UselessImportCheck"ZRemove this unused import 'com.gameloft9.demo.dataaccess.model.system.DepotInventoryTest'.(æÉÂ8êòÊá•-
+fsquid:S4488L"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(şş¢ÿÿÿÿÿ
+asquid:S4488:"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ğ‰Ñ”

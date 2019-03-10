@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SysInventoryOrderMapper">
+    <!--库存、订单、仓库库存订单分页信息-->
+    <resultMap id="InventoryMap" type="com.gameloft9.demo.dataaccess.dao.system.DepotInventoryMapper">
+        <id property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="goodsType" column="GOODS_TYPE" jdbcType="INTEGER"/>
+        <result property="goodsId" column="GOODS_ID" jdbcType="VARCHAR"/>
+        <result property="goodsNumber" column="GOODS_NUMBER" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="OrderMap" type="com.gameloft9.demo.dataaccess.dao.system.DepotOrderMapper">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="ORDER_TYPE" property="orderType" jdbcType="INTEGER"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
+        <result column="GOODS_NUMBER" property="goodsNumber" jdbcType="VARCHAR"/>
+        <result column="APPLY_USER" property="applyUser" jdbcType="VARCHAR"/>
+        <result column="APPLY_TIME" property="applyTime" jdbcType="DATE"/>
+        <result column="STATE" property="state" jdbcType="VARCHAR"/>
+        <result column="ORDER_AUDIT_USER" property="orderAuditUser" jdbcType="VARCHAR"/>
+        <result column="ORDER_AUDIT_TIME" property="orderAuditTime" jdbcType="DATE"/>
+        <result column="APPLY_DESCRIBE" property="applyDescribe" jdbcType="VARCHAR"/>
+        <result column="AUDIT_DESCRIBE" property="auditDescribe" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="InventoryOrderMap" type="com.gameloft9.demo.dataaccess.dao.system.InventoryOrderMapper">
+        <id property="id" column="ID"/>
+        <result property="inventoryId" column="INVENTORY_ID"/>
+        <result property="orderId" column="ORDER_ID"/>
+        <result column="GOODS_TYPE" property="goodsType"/>
+        <result column="GOODS_ID" property="goodsId"/>
+        <result column="GOODS_NUMBER" property="goodsNumber"/>
+        <result column="APPLY_USER" property="applyUser" />
+        <result column="APPLY_TIME" property="applyTime" />
+        <result column="ORDER_AUDIT_USER" property="orderAuditUser"/>
+        <result column="ORDER_AUDIT_TIME" property="orderAuditTime"/>
+    </resultMap>
+
+    <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
+    <sql id="Base_Column_List">
+       ID,INVENTORY_ID,ORDER_ID,GOODS_TYPE,GOODS_ID,GOODS_NUMBER,APPLY_USER,APPLY_TIME,
+       ORDER_AUDIT_USER,ORDER_AUDIT_TIME
+    </sql>
+    <!--仓库库存订单分页显示-->
+    <select id="selectAll" resultMap="InventoryOrderMap">
+        select
+            i.GOODS_TYPE,
+            o.GOODS_ID,
+            i.GOODS_NUMBER,
+            o.APPLY_USER,
+            o.APPLY_TIME,
+            o.ORDER_AUDIT_USER,
+            o.ORDER_AUDIT_TIME
+        from
+            t_depot_inventory i,
+            t_depot_order o,
+            sys_inventory_order io
+        <where>
+            <if test="id != null and id != ''">
+                and i.ID = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="goodsId != null and goodsId != ''">
+                and o.GOODS_ID = #{goodsId,jdbcType=VARCHAR}
+            </if>
+            and i.ID = io.INVENTORY_ID
+            and o.ID = io.ORDER_ID
+        </where>
+        limit #{start,jdbcType=DECIMAL},#{end,jdbcType=DECIMAL}
+    </select>
+
+    <!--获取库存订单总条数  Integer getCountAll-->
+    <select id="countGetAll" resultType="int" parameterType="map">
+        select
+        count(1)
+        from sys_inventory_order t
+        <where>
+            <if test="id != null and id != ''">
+                and i.ID = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="goodsId != null and goodsId != ''">
+                and o.GOODS_ID = #{goodsId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <!--获取id-->
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_inventory_order t
+        WHERE t.ID=#{id}
+    </select>
+
+    <!--添加-->
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder">
+        INSERT INTO sys_inventory_order(ID,INVENTORY_ID,ORDER_ID,GOODS_TYPE,GOODS_ID,GOODS_NUMBER,
+        APPLY_USER,APPLY_TIME,ORDER_AUDIT_USER,ORDER_AUDIT_TIME)
+        VALUES (#{id},#{inventoryId},#{orderId},#{goodsType},#{goodsId},#{goodsNumber},#{applyUser},
+        #{applyTime},#{orderAuditUser},#{orderAuditTime})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM sys_inventory_order
+        WHERE ID = #{id}
+    </delete>
+
+    <!--修改-->
+    <update id="update" parameterType="com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder">
+        UPDATE sys_inventory_order
+        SET INVENTORY_ID=#{inventoryId},ORDER_ID=#{ordreId},GOODS_TYPE=#{goodsType},
+        GOODS_ID=#{goodsId},GOODS_NUMBER=#{goodsNumber},APPLY_USER=#{applyUser},
+        APPLY_TIME=#{applyTime},ORDER_AUDIT_USER=#{orderAuditUser},
+        ORDER_AUDIT_TIME=#{orderAuditTime},AUDIT_DESCRIBE=#{auditDescribe}
+        WHERE ID = #{id}
+    </update>

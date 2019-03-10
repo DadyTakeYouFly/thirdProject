@@ -1,9 +1,7 @@
 
-bjavascript:UnusedVariable"7Remove the declaration of the unused 'laytpl' variable.(Ú›ÏD8óˆ‹á•-
-gjavascript:UnusedVariablew"6Remove the declaration of the unused 'index' variable.(’ÔÍùÿÿÿÿ8¤í‹á•-
 ]javascript:S1854":Remove this useless assignment to local variable "laypage"(ĞÏ¦8óˆ‹á•-
-`javascript:S1854w"8Remove this useless assignment to local variable "index"(’ÔÍùÿÿÿÿ8¤í‹á•-
-djavascript:UnusedVariable"8Remove the declaration of the unused 'laypage' variable.(ĞÏ¦8óˆ‹á•-
-^javascript:UnusedVariable-"3Remove the declaration of the unused 'tr' variable.(ƒ€û8¤í‹á•-
-Wjavascript:S1854-"5Remove this useless assignment to local variable "tr"(ƒ€û8¤í‹á•-
 [javascript:S1854"9Remove this useless assignment to local variable "laytpl"(Ú›ÏD8óˆ‹á•-
+^javascript:UnusedVariable4"3Remove the declaration of the unused 'tr' variable.(ƒ€û8¤í‹á•-
+bjavascript:UnusedVariable"7Remove the declaration of the unused 'laytpl' variable.(Ú›ÏD8óˆ‹á•-
+Wjavascript:S18544"5Remove this useless assignment to local variable "tr"(ƒ€û8¤í‹á•-
+djavascript:UnusedVariable"8Remove the declaration of the unused 'laypage' variable.(ĞÏ¦8óˆ‹á•-
