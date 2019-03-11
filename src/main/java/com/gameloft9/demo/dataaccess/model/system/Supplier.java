@@ -1,6 +1,6 @@
 package com.gameloft9.demo.dataaccess.model.system;
 
-public class SupplierTest {
+public class Supplier {
     private String id;
     private String supplierName;
     private String supplierDescribe;
@@ -8,7 +8,7 @@ public class SupplierTest {
 
     @Override
     public String toString() {
-        return "SupplierTest{" +
+        return "Supplier{" +
                 "id='" + id + '\'' +
                 ", supplierName='" + supplierName + '\'' +
                 ", supplierDescribe='" + supplierDescribe + '\'' +
@@ -48,13 +48,13 @@ public class SupplierTest {
         this.phone = phone;
     }
 
-    public SupplierTest(String id, String supplierName, String supplierDescribe, String phone) {
+    public Supplier(String id, String supplierName, String supplierDescribe, String phone) {
         this.id = id;
         this.supplierName = supplierName;
         this.supplierDescribe = supplierDescribe;
         this.phone = phone;
     }
 
-    public SupplierTest() {
+    public Supplier() {
     }
 }
