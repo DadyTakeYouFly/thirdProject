@@ -1,12 +1,11 @@
 package com.gameloft9.demo.service.api.system;
 
 import com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder;
-import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-@Service
+
 public interface SysInventoryOrderService {
 
     //获取id

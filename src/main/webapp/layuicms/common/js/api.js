@@ -241,24 +241,33 @@ layui.define(['$tool','jquery'], function (exports) {
             doPost($tool.getContext()+'depot/useless/update.do',req,config,successCallback,errorCallback);
         },
 
-        //iolist 订单库存一览表
+        //sysOC 订单库存一览表
         //删除
-        ioDelete:function(req,successCallback,errorCallback){
-            doGet($tool.getContext()+'iolist/delete.do',req,successCallback,errorCallback);
+        ocDelete:function(req,successCallback,errorCallback){
+            doGet($tool.getContext()+'sysOC/delete.do',req,successCallback,errorCallback);
         },
         //修改 获取id
-        ioGet:function(req,successCallback,errorCallback){
-            doPost($tool.getContext()+'iolist/get.do',req,successCallback,errorCallback);
+        ocGet:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'sysOC/get.do',req,successCallback,errorCallback);
         },
         //修改 获取所有列表
-        ioGetList:function(req,successCallback,errorCallback){
-            doPost($tool.getContext() + 'iolist/list.do',req,successCallback,errorCallback);
+        ocGetList:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'sysOC/list.do',req,successCallback,errorCallback);
         },
         //修改
-        ioUpdate:function(req,config,successCallback,errorCallback){
-            doPost($tool.getContext()+'iolist/update.do',req,config,successCallback,errorCallback);
+        ocUpdate:function(req,config,successCallback,errorCallback){
+            doPost($tool.getContext()+'sysOC/update.do',req,config,successCallback,errorCallback);
         },
-
+        GetFirstClassSysOrder:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'sysOC/firstClassSysOrder.do',req,successCallback,errorCallback);
+        },
+        GetFirstClassSysGoods:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'sysOC/firstClassSysGoods.do',req,successCallback,errorCallback);
+        },
+        //增加
+        ocAdd:function(req,successCallback,errorCallback){
+            doPost($tool.getContext()+'sysOC/insert.do',req,successCallback,errorCallback);
+        },
     };
 
 

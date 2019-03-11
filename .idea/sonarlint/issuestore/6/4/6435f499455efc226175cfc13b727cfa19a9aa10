@@ -1,5 +1,5 @@
 
-ysquid:UselessImportCheck"PRemove this unused import 'com.gameloft9.demo.dataaccess.model.system.UserTest'.(äžÈÿúÿÿÿÿ
 Zsquid:S00107"=Method has 11 parameters, which is greater than 7 authorized.(ô‚€îüÿÿÿÿ
 bsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Õ†Š›
 Usquid:S00107"=Method has 11 parameters, which is greater than 7 authorized.(„ôèÖ
+ysquid:UselessImportCheck"PRemove this unused import 'com.gameloft9.demo.dataaccess.model.system.UserTest'.(äžÈÿúÿÿÿÿ

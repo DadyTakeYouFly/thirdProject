@@ -6,10 +6,12 @@ import com.gameloft9.demo.mgrframework.utils.CheckUtil;
 import com.gameloft9.demo.service.api.system.SysInventoryOrderService;
 import com.gameloft9.demo.service.beans.system.PageRange;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class SysInventoryOrderServiceImpl implements SysInventoryOrderService {
 
     @Autowired

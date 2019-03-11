@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SysOrderCheckMapper">
+    <!--订单、库存盘点订单分页信息-->
+    <resultMap id="OrderMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="ORDER_TYPE" property="orderType" jdbcType="INTEGER"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
+        <result column="GOODS_NUMBER" property="goodsNumber" jdbcType="VARCHAR"/>
+        <result column="APPLY_USER" property="applyUser" jdbcType="VARCHAR"/>
+        <result column="APPLY_TIME" property="applyTime" jdbcType="DATE"/>
+        <result column="STATE" property="state" jdbcType="VARCHAR"/>
+        <result column="ORDER_AUDIT_USER" property="orderAuditUser" jdbcType="VARCHAR"/>
+        <result column="ORDER_AUDIT_TIME" property="orderAuditTime" jdbcType="DATE"/>
+        <result column="APPLY_DESCRIBE" property="applyDescribe" jdbcType="VARCHAR"/>
+        <result column="AUDIT_DESCRIBE" property="auditDescribe" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="CheckMap" type="com.gameloft9.demo.dataaccess.model.system.DepotInventoryCheckTest">
+        <id property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="sourceUser" column="SOURCE_USER" jdbcType="VARCHAR"/>
+        <result property="sourceTime" column="SOURCE_TIME" jdbcType="VARCHAR"/>
+        <result property="recordNumber" column="RECORD_NUMBER" jdbcType="VARCHAR"/>
+        <result property="state" column="STATE" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="sysOrderCheckMap" type="com.gameloft9.demo.dataaccess.model.system.SysOrderCheck">
+        <id property="id" column="ID"/>
+        <result property="orderId" column="ORDER_ID"/>
+        <result property="checkId" column="CHECK_ID"/>
+        <result column="ORDER_TYPE" property="goodsType"/>
+        <result column="GOODS_ID" property="goodsId"/>
+        <result column="GOODS_NUMBER" property="goodsNumber"/>
+        <result column="AUDIT_USER" property="applyUser" />
+    </resultMap>
+
+    <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
+    <sql id="Base_Column_List">
+       ID,ORDER_ID,CHECK_ID,ORDER_TYPE,GOODS_ID,GOODS_NUMBER,AUDIT_USER
+    </sql>
+    <!--仓库库存订单分页显示-->
+    <select id="selectAll" resultMap="sysOrderCheckMap">
+        select
+            ic.ID,
+            o.ORDER_TYPE,
+            o.GOODS_ID,
+            o.GOODS_NUMBER,
+            o.ORDER_AUDIT_USER
+        from
+            t_depot_order o,
+            t_depot_inventory_check ic,
+            sys_order_check oc
+        <where>
+            <if test="orderType != null and orderType != ''">
+                and o.ORDER_TYPE = #{orderType,jdbcType=INTEGER}
+            </if>
+            <if test="goodsId != null and goodsId != ''">
+                and o.GOODS_ID = #{goodsId,jdbcType=VARCHAR}
+            </if>
+            and o.ID = oc.ORDER_ID
+            and ic.ID = oc.CHECK_ID
+            and o.ORDER_AUDIT_USER = oc.AUDIT_USER
+        </where>
+        limit #{start,jdbcType=DECIMAL},#{end,jdbcType=DECIMAL}
+    </select>
+
+    <!--获取库存订单总条数  Integer getCountAll-->
+    <select id="countGetAll" resultType="int" parameterType="map">
+        select
+        count(1)
+        from sys_order_check t
+        <where>
+            <if test="orderType != null and orderType != ''">
+                and o.ORDER_TYPE = #{orderType,jdbcType=INTEGER}
+            </if>
+            <if test="goodsId != null and goodsId != ''">
+                and o.GOODS_ID = #{goodsId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <!--获取id-->
+    <select id="selectByPrimaryKey" resultMap="sysOrderCheckMap" parameterType="java.lang.String">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM
+            sys_order_check t
+        WHERE
+           t.ID=#{id}
+    </select>
+
+    <!--添加-->
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder">
+        INSERT INTO
+            sys_order_check
+            (ID,
+            ORDER_ID,
+            CHECK_ID,
+            ORDER_TYPE,
+            GOODS_ID,
+            GOODS_NUMBER,
+            AUDIT_USER)
+        VALUES
+            (#{id},
+            #{orderId},
+            #{checkId},
+            #{orderType},
+            #{goodsId},
+            #{goodsNumber},
+            #{auditUser})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM
+            sys_order_check
+        WHERE
+            ID = #{id}
+    </delete>
+
+    <!--修改-->
+    <update id="update" parameterType="com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder">
+        UPDATE
+            sys_order_check
+        SET
+            ORDER_ID=#{ordreId},
+            CHECK_ID=#{checkId},
+            ORDER_TYPE=#{orderType},
+            GOODS_ID=#{goodsId},
+            GOODS_NUMBER=#{goodsNumber},
+            AUDIT_USER=#{auditUser},
+        WHERE
+            ID = #{id}
+    </update>
+
+    <!--初始化货品(成品/原料)下拉框-->
+    <select id="getOrderType" resultType="java.lang.Integer">
+        select DISTINCT ORDER_TYPE from t_depot_order
+    </select>
+
+    <!--初始化货品(成品/原料)ID下拉框-->
+    <select id="getGoodsId" resultType="java.lang.String">
+        select DISTINCT GOODS_ID from t_depot_order
+    </select>
+
+    <select id="getFirstClassListOrder" resultType="java.lang.Integer">
+        select
+        t.ORDER_TYPE
+        from t_depot_order t
+        where t.ORDER_TYPE IS NOT NULL
+    </select>
+    <select id="getFirstClassListGoods" resultType="java.lang.String">
+        select
+        t.GOODS_ID
+        from t_depot_order t
+        where t.GOODS_ID IS NOT NULL
+    </select>
+</mapper>

@@ -12,9 +12,6 @@ public interface SysInventoryOrderMapper {
     //获取id
     SysInventoryOrder selectByPrimaryKey(String id);
 
-    //查询所有
-    //List<DepotOrderTest> selectAll();
-
     //增加
     int insert(SysInventoryOrder record);
 
@@ -35,7 +32,6 @@ public interface SysInventoryOrderMapper {
             @Param("end") int end,
             @Param("id") String id,
             @Param("goodsId") String goodsId);
-    //@Param("state") String state
 
 
     /**
@@ -43,6 +39,5 @@ public interface SysInventoryOrderMapper {
      * */
     int countGetAll( @Param("id") String id,
                      @Param("goodsId") String goodsId);
-    //@Param("state") String state
 
 }
