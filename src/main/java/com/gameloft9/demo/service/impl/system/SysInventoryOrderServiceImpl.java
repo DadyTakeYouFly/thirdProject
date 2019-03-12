@@ -2,13 +2,12 @@ package com.gameloft9.demo.service.impl.system;
 
 import com.gameloft9.demo.dataaccess.dao.system.SysInventoryOrderMapper;
 import com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder;
-import com.gameloft9.demo.mgrframework.utils.CheckUtil;
 import com.gameloft9.demo.service.api.system.SysInventoryOrderService;
 import com.gameloft9.demo.service.beans.system.PageRange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,25 +16,23 @@ public class SysInventoryOrderServiceImpl implements SysInventoryOrderService {
     @Autowired
     SysInventoryOrderMapper dao;
 
+    public List<SysInventoryOrder> selectAll(String page, String limit, String goodsId) {
+        PageRange pageRange = new PageRange(page,limit);
+        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),goodsId);
+    }
+
     public SysInventoryOrder selectByPrimaryKey(String id) {
-        CheckUtil.notBlank(id,"角色id为空");
         return dao.selectByPrimaryKey(id);
     }
 
-    public SysInventoryOrder insert(String id, String inventoryId, String orderId, Integer goodsType,
-                                    String goodsId, String goodsNumber, String applyUser,
-                                    Date applyTime, String orderAuditUser, Date orderAuditTime) {
+    public SysInventoryOrder insert(String id, Integer goodsType, String goodsId,
+                                    String goodsNumber, String goodsDescribe) {
         SysInventoryOrder sys = new SysInventoryOrder();
         sys.setId(id);
-        sys.setInventoryId(inventoryId);
-        sys.setOrderId(orderId);
         sys.setGoodsType(goodsType);
         sys.setGoodsId(goodsId);
         sys.setGoodsNumber(goodsNumber);
-        sys.setApplyUser(applyUser);
-        sys.setApplyTime(applyTime);
-        sys.setOrderAuditUser(orderAuditUser);
-        sys.setOrderAuditTime(orderAuditTime);
+        sys.setGoodsDescribe(goodsDescribe);
         dao.insert(sys);
         return sys;
     }
@@ -45,30 +42,24 @@ public class SysInventoryOrderServiceImpl implements SysInventoryOrderService {
         return true;
     }
 
-    public boolean update(String id, String inventoryId, String orderId, Integer goodsType,
-                          String goodsId, String goodsNumber, String applyUser,
-                          Date applyTime, String orderAuditUser, Date orderAuditTime) {
+    public boolean update(String id, Integer goodsType, String goodsId, String goodsNumber,
+                          String goodsDescribe) {
         SysInventoryOrder sys = new SysInventoryOrder();
         sys.setId(id);
-        sys.setInventoryId(inventoryId);
-        sys.setOrderId(orderId);
         sys.setGoodsType(goodsType);
         sys.setGoodsId(goodsId);
         sys.setGoodsNumber(goodsNumber);
-        sys.setApplyUser(applyUser);
-        sys.setApplyTime(applyTime);
-        sys.setOrderAuditUser(orderAuditUser);
-        sys.setOrderAuditTime(orderAuditTime);
-        dao.update(sys);
+        sys.setGoodsDescribe(goodsDescribe);
         return true;
     }
 
-    public List<SysInventoryOrder> getAll(String page, String limit, String id, String goodsId) {
-        PageRange pageRange = new PageRange(page,limit);
-        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),id,goodsId);
+    public int countGetAll(String goodsId) {
+        return dao.countGetAll(goodsId);
     }
 
-    public int countGetAll(String id, String goodsId) {
-        return dao.countGetAll(id,goodsId);
+    public List<SysInventoryOrder> getFirstClassListGoods() {
+        List<SysInventoryOrder> sys = new ArrayList<SysInventoryOrder>();
+        sys = dao.getFirstClassListGoods();
+        return sys;
     }
 }

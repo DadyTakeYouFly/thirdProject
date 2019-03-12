@@ -258,8 +258,8 @@ layui.define(['$tool','jquery'], function (exports) {
         ocUpdate:function(req,config,successCallback,errorCallback){
             doPost($tool.getContext()+'sysOC/update.do',req,config,successCallback,errorCallback);
         },
-        GetFirstClassSysOrder:function(req,successCallback,errorCallback){
-            doPost($tool.getContext() + 'sysOC/firstClassSysOrder.do',req,successCallback,errorCallback);
+        GetFirstClassSysCheck:function(req,successCallback,errorCallback){
+            doPost($tool.getContext() + 'sysOC/firstClassSysCheck.do',req,successCallback,errorCallback);
         },
         GetFirstClassSysGoods:function(req,successCallback,errorCallback){
             doPost($tool.getContext() + 'sysOC/firstClassSysGoods.do',req,successCallback,errorCallback);

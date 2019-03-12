@@ -20,19 +20,9 @@
         <div class="layui-inline">
             <label class="layui-form-label">订单类型</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="orderType" placeholder="请输入订单类型">
+                <input type="text" class="layui-input" name="orderType" placeholder="1.成品 2.原料">
             </div>
         </div>
-        <!--<div class="layui-inline">
-            <label class="layui-form-label">订单状态</label>
-            <div class="layui-input-block">
-                <select name="state" >
-                    <option value="">-&#45;&#45;&#45;&#45;请选择-&#45;&#45;&#45;&#45;</option>
-                    <option value="0">-&#45;&#45;&#45;&#45;申请中-&#45;&#45;&#45;&#45;</option>
-                    <option value="1">-&#45;&#45;&#45;&#45;审核中-&#45;&#45;&#45;&#45;</option>
-                </select>
-            </div>
-        </div>-->
         <div class="layui-inline">
             <a class="layui-btn search_btn" lay-submit="" lay-filter="queryDepot">查询</a>
         </div>
@@ -49,22 +39,24 @@
 </div>
 <!--分页元素-->
 <div id="page"></div>
-<!--toolbar 模板-->
+<!--toolbar模板-->
+<!--设置审核按钮-->
 <script type="text/html" id="barDemo">
     <!--通过lay-event定义事件-->
-    <a class="layui-btn layui-btn-sm" lay-event="inspect"><i class="layui-icon">&#xe631;</i>审核</a>
+    {{#  if(d.state === "审核通过"){ }}
     <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
-
-</script>
-<!--订单状态-->
-<!--<script type="text/html" id="tmp">
-    {{#  if(d.state === '1'){ }}
-       审核中
-    {{#  } else { }}
-       申请中
     {{#  } }}
-</script>-->
+    {{#  if(d.state === "审核不通过"){ }}
+    <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+    {{#  } }}
+    {{#  if(d.state === "审核中"){ }}
+    <a class="layui-btn layui-btn-sm layui-btn-normal"  lay-event="inspect" lay-filter="menuTypeFilter"><i class="layui-icon">&#xe631;</i>审核</a>
+    <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+    {{#  } }}
+</script>
 
 <!--一般情况下，一个业务页面引入一个layui.js,config.js和业务js这三个js就够了-->
 <script type="text/javascript" src="../../../lib/layui/layui.js"></script>

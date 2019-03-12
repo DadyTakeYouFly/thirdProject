@@ -21,23 +21,22 @@ layui.config({
     function defineTable() {
         tableIns = table.render({
             elem: '#depot-data'
-            , height: 415
             , url: $tool.getContext() + 'depot/order/list.do' //数据接口
             , method: 'post'
             , page:true //开启分页
             , cols: [[ //表头
                 //{title:'订单单号',width: '8%'},
-                {type:'id',field: 'id', title: '订单单号',fixed: 'left', width: '8%'}
-                , {field: 'orderType', title: '订单类型', width: '8%'}
-                , {field: 'goodsId', title: '原料/成品ID', width: '10%'}
-                , {field: 'goodsNumber', title: '货品数量', width: '8%'}
-                , {field: 'applyUser', title: '申请人', width: '8%'}
-                , {field: 'applyTime', title: '申请时间', width: '12%'}
-                , {field: 'state', title: '订单状态', width: '8%',templet: '#tmp'}
-                , {field: 'orderAuditUser', title: '审核人', width: '8%'}
-                , {field: 'orderAuditTime', title: '审核时间', width: '12%'}
-                , {field: 'applyDescribe', title: '申请描述', width: '12%'}
-                , {field: 'auditDescribe', title: '审核描述', width: '12%'}
+                {type:'id',field: 'id', title: '订单单号',fixed: 'left'}
+                , {field: 'orderType', title: '订单类型'}
+                , {field: 'goodsId', title: '原料/成品ID'}
+                , {field: 'goodsNumber', title: '货品数量'}
+                , {field: 'applyUser', title: '申请人'}
+                , {field: 'applyTime', title: '申请时间'}
+                , {field: 'state', title: '订单状态',templet: '#tmp'}
+                , {field: 'orderAuditUser', title: '审核人'}
+                , {field: 'orderAuditTime', title: '审核时间'}
+                , {field: 'applyDescribe', title: '申请描述'}
+                , {field: 'auditDescribe', title: '审核描述'}
                 , {fixed: 'right', title: '操作', width: 250, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调

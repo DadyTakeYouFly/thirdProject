@@ -2,24 +2,24 @@ package com.gameloft9.demo.dataaccess.model.system;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
-public class SysInventoryOrder {
+public class SysOrderCheck {
     private String id;
-    private Integer goodsType;
+    private String checkId;
+    private Integer orderType;
     private String goodsId;
     private String goodsNumber;
-    private String goodsDescribe;
+    private String auditUser;
 
     @Override
     public String toString() {
-        return "SysInventoryOrder{" +
+        return "SysOrderCheck{" +
                 "id='" + id + '\'' +
-                ", goodsType=" + goodsType +
+                ", checkId='" + checkId + '\'' +
+                ", orderType=" + orderType +
                 ", goodsId='" + goodsId + '\'' +
                 ", goodsNumber='" + goodsNumber + '\'' +
-                ", goodsDescribe='" + goodsDescribe + '\'' +
+                ", auditUser='" + auditUser + '\'' +
                 '}';
     }
 }

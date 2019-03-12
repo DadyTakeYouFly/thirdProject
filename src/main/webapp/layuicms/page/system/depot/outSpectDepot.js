@@ -38,14 +38,14 @@ layui.config({
     /**
      * 表单提交
      * */
-    form.on("submit(editRole)", function (data) {
+    form.on("submit(successDepot)", function (data) {
         var id = data.field.id;
         var orderType = data.field.orderType;
         var goodsId = data.field.goodsId;
         var goodsNumber = data.field.goodsNumber;
         var applyUser = data.field.applyUser;
         var applyTime = data.field.applyTime;
-        var state = data.field.state;
+        var state = $(this).html();
         var orderAuditUser = data.field.orderAuditUser;
         var orderAuditTime = data.field.orderAuditTime;
         var applyDescribe = data.field.applyDescribe;
@@ -69,7 +69,7 @@ layui.config({
             auditDescribe:auditDescribe
         };
 
-        $api.inInspectDepot(req,function (data) {
+        $api.inspectDepot(req,function (data) {
             layer.msg("修改成功！",{time:1000},function () {
                 layer.closeAll("iframe");
                 //刷新父页面

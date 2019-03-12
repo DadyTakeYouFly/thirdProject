@@ -5,11 +5,15 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-
 public interface SysInventoryOrderMapper {
 
+    //获取所有
+    List<SysInventoryOrder> selectAll(
+            @Param("start") int start,
+            @Param("end") int end,
+            @Param("goodsId") String goodsId);
 
-    //获取id
+    //根据id查询
     SysInventoryOrder selectByPrimaryKey(String id);
 
     //增加
@@ -21,23 +25,9 @@ public interface SysInventoryOrderMapper {
     //修改
     int update(SysInventoryOrder record);
 
+    //获取所有个数
+    int countGetAll(@Param("goodsId") String goodsId);
 
-    /**
-     * 获取所有角色
-     * @param start 开始
-     * @param end 结束
-     * */
-    List<SysInventoryOrder> selectAll(
-            @Param("start") int start,
-            @Param("end") int end,
-            @Param("id") String id,
-            @Param("goodsId") String goodsId);
-
-
-    /**
-     * 获取所有角色个数
-     * */
-    int countGetAll( @Param("id") String id,
-                     @Param("goodsId") String goodsId);
-
+    //获取货品名称下拉框
+    List<SysInventoryOrder> getFirstClassListGoods();
 }

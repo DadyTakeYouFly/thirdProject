@@ -21,17 +21,15 @@ layui.config({
     function defineTable() {
         tableIns = table.render({
             elem: '#depot-data'
-            , height: 415
             , url: $tool.getContext() + 'depot/check/list.do' //数据接口
             , method: 'post'
             , page:true //开启分页
             , cols: [[ //表头
-                //{title:'订单单号',width: '8%'},
-                {type:'id',field: 'id', title: '订单编号',fixed: 'left', width: '8%'}
-                , {field: 'sourceUser', title: '发起人', width: '8%'}
-                , {field: 'sourceTime', title: '发起时间', width: '12%'}
-                , {field: 'recordNumber', title: '记录数量', width: '8%'}
-                , {field: 'state', title: '状态 盘点中/结束', width: '15%'}
+                {type:'id',field: 'id', title: '订单编号',fixed: 'left'}
+                , {field: 'sourceUser', title: '发起人'}
+                , {field: 'sourceTime', title: '发起时间'}
+                , {field: 'recordNumber', title: '记录数量'}
+                , {field: 'state', title: '状态 盘点中/结束'}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调

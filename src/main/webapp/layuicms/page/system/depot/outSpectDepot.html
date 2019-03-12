@@ -94,20 +94,9 @@
         </div>
     </div>
     <div class="layui-form-item">
-       <!-- <label class="layui-form-label">是否通过审核</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="isSuper" lay-skin="switch" lay-text="是|否" value="1">
-        </div>-->
-        <label class="layui-form-label">审核结果</label>
-        <div class="layui-input-block">
-            <input type="radio" name="state" title="审核中"checked>
-            <input type="radio" name="state" title="审核通过">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="editRole">提交审核</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn" lay-submit="" lay-filter="successDepot" name="state">审核通过</button>
+            <button type="reset" class="layui-btn layui-btn-primary" lay-filter="successDepot" name="state">审核不通过</button>
         </div>
     </div>
 </form>

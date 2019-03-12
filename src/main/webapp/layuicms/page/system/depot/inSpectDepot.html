@@ -63,12 +63,6 @@
             <input type="date" class="layui-input" name="applyTime" readonly="readonly" lay-verify="required">
         </div>
     </div>
-    <!--<div class="layui-form-item">
-        <label class="layui-form-label">订单状态</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" name="state" readonly="readonly" value="审核中" lay-verify="required">
-        </div>
-    </div>-->
     <div class="layui-form-item">
         <label class="layui-form-label">审核人</label>
         <div class="layui-input-block">
@@ -94,20 +88,9 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <!--<label class="layui-form-label">审核结果</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="isSuccess" lay-skin="switch" lay-text="审核通过|审核中" value="1">
-        </div>-->
-        <label class="layui-form-label">审核结果</label>
-        <div class="layui-input-block">
-            <input type="radio" name="state" title="审核中"checked>
-            <input type="radio" name="state" title="审核通过">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="editDepot">提交审核</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn" lay-submit=""  lay-filter="successDepot" name="state">审核通过</button>
+            <button class="layui-btn  layui-btn-primary"  lay-submit="" lay-filter="successDepot" name="state">审核不通过</button>
         </div>
     </div>
 </form>

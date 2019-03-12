@@ -21,26 +21,20 @@ layui.config({
     function defineTable() {
         tableIns = table.render({
             elem: '#depot-data'
-            , url: $tool.getContext() + 'depot/order/list.do' //数据接口
+            , url: $tool.getContext() + 'sysOC/list.do' //数据接口
             , method: 'post'
-            , height: 415
             , page:true //开启分页
             , cols: [[ //表头
-                  {type:'id',field: 'id', title: '订单单号',fixed: 'left', width:100}
-                , {field: 'orderType', title: '订单类型' , width:100}
-                , {field: 'goodsId', title: '原料/成品ID', width:120}
-                , {field: 'goodsNumber', title: '货品数量', width:100}
-                , {field: 'applyUser', title: '申请人', width:80}
-                , {field: 'applyTime', title: '申请时间', width:100}
-                , {field: 'state', title: '订单状态',templet: '#tmp', width:100}
-                , {field: 'orderAuditUser', title: '审核人', width:80}
-                , {field: 'orderAuditTime', title: '审核时间', width:120}
-                , {field: 'applyDescribe', title: '申请描述', width:120}
-                , {field: 'auditDescribe', title: '审核描述', width:220}
-                , {fixed: 'right', title: '操作', width: 250, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+                //{title:'订单单号',width: '8%'},
+                {type:'id',field: 'id', title: '库存编号',fixed: 'left'}
+                , {field: 'checkId', title: '盘点编号'}
+                , {field: 'orderType', title: '货品类型'}
+                , {field: 'goodsId', title: '货品名称'}
+                , {field: 'goodsNumber', title: '货品数量'}
+                , {field: 'auditUser', title: '审核人'}
+                , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调
-            // 如果是异步请求数据方式，res即为你接口返回的信息.curr：当前页码
             }
         });
 
@@ -51,40 +45,28 @@ layui.config({
             var tr = obj.tr; //获得当前行 tr 的DOM对象
 
             //区分事件
-            if (layEvent === 'del'){
-             //删除
+            if (layEvent === 'del') { //删除
                 delDepot(row.id);
-            } else if (layEvent === 'edit'){
-             //修改
+            } else if (layEvent === 'edit') { //修改
                 //do something
                 editDepot(row.id);
-
-            } else
-            { //审核
-                inspectDepot(row.id);
             }
-
         });
     }
     defineTable();
 
-    /**
-     * 监听radio选择
-     * */
-    form.on('radio(menuTypeFilter)', function (data) {
-
-    });
 
     //查询  insepectId单号查询
     form.on("submit(queryDepot)", function (data) {
-        var orderType = data.field.orderType;
-        //var state = data.field.state;
+        var checkId = data.field.checkId;
+        var goodsId = data.field.goodsId;
+
 
         //表格重新加载
         tableIns.reload({
             where:{
-                orderType:orderType,
-                //state:state
+                checkId:checkId,
+                goodsId:goodsId
             }
         });
 
@@ -94,12 +76,12 @@ layui.config({
     //添加角色
     $(".usersAdd_btn").click(function () {
         var index = layui.layer.open({
-            title: "申请入库单",
+            title: "添加盘点",
             type: 2,
-            content: "inAddDepot.html",
+            content: "sysOrderCheckAdd.html",
             success: function (layero, index) {
                 setTimeout(function () {
-                    layui.layer.tips('点击此处返回入库单列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回库存盘点明细列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 }, 500)
@@ -122,7 +104,7 @@ layui.config({
                 id: id
             };
 
-            $api.deleteDepot(req,function (data) {
+            $api.ocDelete(req,function (data) {
                 layer.msg("删除成功",{time:1000},function(){
                     //obj.del(); //删除对应行（tr）的DOM结构
                     //重新加载表格
@@ -132,38 +114,15 @@ layui.config({
         });
     }
 
-
-    //审核
-    function inspectDepot(id) {
-        var index = layui.layer.open({
-            title: "审核订单",
-            type: 2,
-            content: "inSpectDepot.html?id=" + id,
-            success: function (layero, index) {
-                setTimeout(function () {
-                    layui.layer.tips('点击此处返回入库单列表', '.layui-layer-setwin .layui-layer-close', {
-                        tips: 3
-                    });
-                }, 500)
-            }
-        });
-
-        //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
-        $(window).resize(function () {
-            layui.layer.full(index);
-        });
-        layui.layer.full(index);
-    }
-
     //修改
     function editDepot(id){
         var index = layui.layer.open({
-            title:"修改订单",
+            title:"管理库存",
             type:2,
-            content:"inEditDepot.html?id="+id,
+            content:"sysOrderCheckEdit.html?id="+id,
             success: function (layero,index) {
                 setTimeout(function () {
-                    layui.layer.tips('点击此处返回入库单列表', '.layui-layer-swtwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回库存盘点列表', '.layui-layer-swtwin .layui-layer-close', {
                         tips: 3
                     });
                 }, 500)
@@ -177,4 +136,4 @@ layui.config({
         layui.layer.full(index);
     }
 
-    });
+});

@@ -39,7 +39,7 @@ layui.config({
 
         $api.getDepot(req,function (res) {
             var data = res.data;
-            console.log(data)
+            //console.log(data)
             $("[name='id']").val(data.id);
             $("[name='orderType']").val(data.orderType);
             $("[name='goodsId']").val(data.goodsId);
@@ -92,32 +92,25 @@ layui.config({
     /**
      * 表单提交
      * */
-    form.on("submit(editDepot)", function (data) {
-        //var queryArgs = $tool.getQueryParam();//获取查询参数
+    form.on("submit(successDepot)", function (data) {
         var id = data.field.id;
         var orderType = data.field.orderType;
         var goodsId = data.field.goodsId;
         var goodsNumber = data.field.goodsNumber;
         var applyUser = data.field.applyUser;
         var applyTime = data.field.applyTime;
-        var state = data.field.state;
+        var state = $(this).html();
         var orderAuditUser = data.field.orderAuditUser;
         var orderAuditTime = data.field.orderAuditTime;
         var applyDescribe = data.field.applyDescribe;
         var auditDescribe = data.field.auditDescribe;
         var idList = new Array();
 
-       /* //获取选中的角色列表
-        for(var i=0;i<depotIdList.length;i++){
-            if(data.field[depotIdList[i]] === 'on'){
-                idList.push(depotIdList[i]);
-            }
-        }*/
+
 
         //请求
         var url = $tool.getContext()+'depot/order/update.do';
         var req = {
-            //id:queryArgs['id'],
             id:id,
             orderType:orderType,
             goodsId:goodsId,
@@ -133,7 +126,7 @@ layui.config({
         };
 
         $api.updateDepot(req,function (data) {
-            layer.msg("修改成功！",{time:1000},function () {
+            layer.msg("提交成功！",{time:1000},function () {
                 layer.closeAll("iframe");
                 //刷新父页面
                 parent.location.reload();

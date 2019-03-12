@@ -21,16 +21,15 @@ layui.config({
     function defineTable() {
         tableIns = table.render({
             elem: '#depot-data'
-            , height: 415
             , url: $tool.getContext() + 'depot/inventory/list.do' //数据接口
             , method: 'post'
             , page:true //开启分页
             , cols: [[ //表头
                 //{title:'订单单号',width: '8%'},
-                  {type:'id',field: 'id', title: '货品编号',fixed: 'left', width: '8%'}
-                , {field: 'goodsType', title: '货品类型', width: '8%'}
-                , {field: 'goodsId', title: '原料/成品ID', width: '10%'}
-                , {field: 'goodsNumber', title: '货品数量', width: '12%'}
+                  {type:'id',field: 'id', title: '货品编号',fixed: 'left'}
+                , {field: 'goodsType', title: '货品类型'}
+                , {field: 'goodsId', title: '原料/成品ID'}
+                , {field: 'goodsNumber', title: '货品数量'}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调

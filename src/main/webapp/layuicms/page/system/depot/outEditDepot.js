@@ -14,7 +14,6 @@ layui.config({
 
 
     var depotIdList = new Array();//所有的角色id列表
-    //var depotIds =[];//菜单所属角色列表
 
     /**
      * 初始化页面

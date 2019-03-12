@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SysOrderCheckMapper">
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SysOrder        CheckMapper">
     <!--订单、库存盘点订单分页信息-->
     <resultMap id="OrderMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
         <id column="ID" property="id" jdbcType="VARCHAR"/>
@@ -26,9 +26,8 @@
 
     <resultMap id="sysOrderCheckMap" type="com.gameloft9.demo.dataaccess.model.system.SysOrderCheck">
         <id property="id" column="ID"/>
-        <result property="orderId" column="ORDER_ID"/>
         <result property="checkId" column="CHECK_ID"/>
-        <result column="ORDER_TYPE" property="goodsType"/>
+        <result column="ORDER_TYPE" property="orderType"/>
         <result column="GOODS_ID" property="goodsId"/>
         <result column="GOODS_NUMBER" property="goodsNumber"/>
         <result column="AUDIT_USER" property="applyUser" />
@@ -36,7 +35,7 @@
 
     <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
     <sql id="Base_Column_List">
-       ID,ORDER_ID,CHECK_ID,ORDER_TYPE,GOODS_ID,GOODS_NUMBER,AUDIT_USER
+       ID,CHECK_ID,ORDER_TYPE,GOODS_ID,GOODS_NUMBER,AUDIT_USER
     </sql>
     <!--仓库库存订单分页显示-->
     <select id="selectAll" resultMap="sysOrderCheckMap">
@@ -51,13 +50,13 @@
             t_depot_inventory_check ic,
             sys_order_check oc
         <where>
-            <if test="orderType != null and orderType != ''">
-                and o.ORDER_TYPE = #{orderType,jdbcType=INTEGER}
+            <if test="checkId != null and checkId != ''">
+                and oc.CHECK_ID = #{checkId,jdbcType=VARCHAR}
             </if>
             <if test="goodsId != null and goodsId != ''">
                 and o.GOODS_ID = #{goodsId,jdbcType=VARCHAR}
             </if>
-            and o.ID = oc.ORDER_ID
+            and o.GOODS_ID = oc.GOODS_ID
             and ic.ID = oc.CHECK_ID
             and o.ORDER_AUDIT_USER = oc.AUDIT_USER
         </where>
@@ -68,13 +67,13 @@
     <select id="countGetAll" resultType="int" parameterType="map">
         select
         count(1)
-        from sys_order_check t
+        from sys_order_check
         <where>
-            <if test="orderType != null and orderType != ''">
-                and o.ORDER_TYPE = #{orderType,jdbcType=INTEGER}
+            <if test="checkId != null and checkId != ''">
+                and CHECK_ID = #{checkId,jdbcType=VARCHAR}
             </if>
             <if test="goodsId != null and goodsId != ''">
-                and o.GOODS_ID = #{goodsId,jdbcType=VARCHAR}
+                and GOODS_ID = #{goodsId,jdbcType=VARCHAR}
             </if>
         </where>
     </select>
@@ -86,7 +85,7 @@
         FROM
             sys_order_check t
         WHERE
-           t.ID=#{id}
+            t.ID=#{id}
     </select>
 
     <!--添加-->
@@ -94,7 +93,6 @@
         INSERT INTO
             sys_order_check
             (ID,
-            ORDER_ID,
             CHECK_ID,
             ORDER_TYPE,
             GOODS_ID,
@@ -102,7 +100,6 @@
             AUDIT_USER)
         VALUES
             (#{id},
-            #{orderId},
             #{checkId},
             #{orderType},
             #{goodsId},
@@ -113,9 +110,9 @@
     <!--删除-->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         DELETE FROM
-            sys_order_check
+            sys_order_check t
         WHERE
-            ID = #{id}
+            t.ID = #{id}
     </delete>
 
     <!--修改-->
@@ -123,7 +120,6 @@
         UPDATE
             sys_order_check
         SET
-            ORDER_ID=#{orderId},
             CHECK_ID=#{checkId},
             ORDER_TYPE=#{orderType},
             GOODS_ID=#{goodsId},
@@ -133,11 +129,11 @@
             ID = #{id}
     </update>
 
-    <select id="getFirstClassListOrder" resultType="java.lang.Integer">
-        select
-        t.ORDER_TYPE
-        from t_depot_order t
-        where t.ORDER_TYPE IS NOT NULL
+    <select id="getFirstClassListCheck" resultType="java.lang.String">
+        select DISTINCT
+        t.ID
+        from t_depot_inventory_check t
+        where t.ID IS NOT NULL
     </select>
     <select id="getFirstClassListGoods" resultType="java.lang.String">
         select
