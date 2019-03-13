@@ -20,13 +20,13 @@
         <div class="layui-inline">
             <label class="layui-form-label">盘点编号</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="checkId" placeholder="请输入编号">
+                <select id="parentCheckId" name="checkId"></select>
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">货品名称</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="goodsId" placeholder="请输入货品名称">
+                <select id="parentGoodsId" name="goodsId"></select>
             </div>
         </div>
         <div class="layui-inline">
@@ -48,9 +48,20 @@
 <!--toolbar 模板-->
 <script type="text/html" id="barDemo">
     <!--通过lay-event定义事件-->
-    <!-- <a class="layui-btn layui-btn-sm" lay-event="inspect"><i class="layui-icon">&#xe631;</i>审核</a>-->
-    <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>管理</a>
+    {{#  if(d.state === "未盘点"){ }}
+    <a class="layui-btn layui-btn-sm layui-btn-warm"  lay-event="check"><i class="layui-icon">&#xe631;</i>盘点</a>
+    <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+    {{#  } }}
+    {{#  if(d.state === "盘点结束，符合实情"){ }}
+    <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+    {{#  } }}
+    {{#  if(d.state === "盘点结束，不符合实情"){ }}
+    <a class="layui-btn layui-btn-sm layui-btn-warm"  lay-event="check"><i class="layui-icon">&#xe631;</i>盘点</a>
+    <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+    {{#  } }}
 </script>
 
 <!--一般情况下，一个业务页面引入一个layui.js,config.js和业务js这三个js就够了-->

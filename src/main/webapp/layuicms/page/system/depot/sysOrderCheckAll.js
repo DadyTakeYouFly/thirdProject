@@ -23,16 +23,17 @@ layui.config({
             elem: '#depot-data'
             , url: $tool.getContext() + 'sysOC/list.do' //数据接口
             , method: 'post'
+            , height:415
             , page:true //开启分页
             , cols: [[ //表头
-                //{title:'订单单号',width: '8%'},
-                {type:'id',field: 'id', title: '库存编号',fixed: 'left'}
-                , {field: 'checkId', title: '盘点编号'}
-                , {field: 'orderType', title: '货品类型'}
+                {type:'id',field: 'id', title: '库存编号',fixed: 'left', width: 90}
+                , {field: 'checkId', title: '盘点编号', width: 90}
+                , {field: 'orderType', title: '货品类型(1.成品 2.原料)', width: 180}
                 , {field: 'goodsId', title: '货品名称'}
                 , {field: 'goodsNumber', title: '货品数量'}
                 , {field: 'auditUser', title: '审核人'}
-                , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+                , {field: 'state', title: '盘点状态', width: 180}
+                , {fixed: 'right', title: '操作', width: 250, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , done: function (res, curr) {//请求完毕后的回调
             }
@@ -50,22 +51,63 @@ layui.config({
             } else if (layEvent === 'edit') { //修改
                 //do something
                 editDepot(row.id);
+            } else{
+                checkDepot(row.id);
             }
         });
     }
     defineTable();
 
+    /**
+     * 页面初始化
+     * */
+    function init() {
+        //初始化下拉框
+        initParentGoods();
+        initParentCheck();
+    }
+    init();
+
+    /**
+     * 初始化下拉框
+     * */
+    function initParentGoods() {
+        $api.GetFirstClassSysGoods(null,function (res) {
+            var data = res.data;
+            if (data.length > 0) {
+                var html = '<option value="">--请选择--</option>';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
+                }
+                $('#parentGoodsId').append($(html));
+                form.render();
+            }
+        });
+    }
+    function initParentCheck() {
+        $api.GetFirstClassSysCheck(null,function (res) {
+            var data = res.data;
+            if (data.length > 0) {
+                var html = '<option value="">--请选择--</option>';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
+                }
+                $('#parentCheckId').append($(html));
+                form.render();
+            }
+        });
+    }
 
     //查询  insepectId单号查询
     form.on("submit(queryDepot)", function (data) {
-        var checkId = data.field.checkId;
+        /*var checkId = data.field.checkId;*/
         var goodsId = data.field.goodsId;
 
 
         //表格重新加载
         tableIns.reload({
             where:{
-                checkId:checkId,
+                /*checkId:checkId,*/
                 goodsId:goodsId
             }
         });
@@ -81,7 +123,7 @@ layui.config({
             content: "sysOrderCheckAdd.html",
             success: function (layero, index) {
                 setTimeout(function () {
-                    layui.layer.tips('点击此处返回库存盘点明细列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回库存列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 }, 500)
@@ -122,7 +164,7 @@ layui.config({
             content:"sysOrderCheckEdit.html?id="+id,
             success: function (layero,index) {
                 setTimeout(function () {
-                    layui.layer.tips('点击此处返回库存盘点列表', '.layui-layer-swtwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回库存列表', '.layui-layer-swtwin .layui-layer-close', {
                         tips: 3
                     });
                 }, 500)
@@ -136,4 +178,25 @@ layui.config({
         layui.layer.full(index);
     }
 
+    //盘点
+    function checkDepot(id) {
+        var index = layui.layer.open({
+            title: "审核订单",
+            type: 2,
+            content: "sysOrderCheckCheck.html?id=" + id,
+            success: function (layero, index) {
+                setTimeout(function () {
+                    layui.layer.tips('点击此处返回库存列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                }, 500)
+            }
+        });
+
+        //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
+        $(window).resize(function () {
+            layui.layer.full(index);
+        });
+        layui.layer.full(index);
+    }
 });

@@ -27,30 +27,35 @@
 </head>
 <body class="childrenBody">
 <form class="layui-form" style="width:80%;" name="editDepotForm">
+
     <div class="layui-form-item">
         <label class="layui-form-label">库存编号</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input"  name="id" readonly="readonly" lay-verify="required">
+            <input type="text" class="layui-input" readonly="readonly" name="id" lay-verify="required" placeholder="请输入库存编号">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">盘点编号</label>
         <div class="layui-input-block">
-            <select id="parentCheckId" name="checkId"/>
+            <select id="parentCheckId" name="checkId"></select>
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">货品类型</label>
         <div class="layui-input-block">
             <input type="text" class="layui-input"  name="orderType" lay-verify="required" placeholder="请输入货品类型1.成品 2.原料">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">货品名称</label>
         <div class="layui-input-block">
             <select id="parentGoodsId" name="goodsId"></select>
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">货品数量</label>
         <div class="layui-input-block">
@@ -58,14 +63,20 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">审核人</label>
+        <label class="layui-form-label">盘点负责人</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="auditUser" lay-verify="required" placeholder="请输入审核人的姓名">
+            <input type="text" class="layui-input" readonly="readonly" name="auditUser" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">盘点状态</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" readonly="readonly" name="state" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="editDepot">立即提交</button>
+            <button class="layui-btn" lay-submit="" lay-filter="editDepot">提交修改</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>

@@ -63,6 +63,7 @@ layui.config({
         var goodsId = data.field.goodsId;
         var goodsNumber = data.field.goodsNumber;
         var auditUser = data.field.auditUser;
+        var state = data.field.state;
 
         //请求
         var req = {
@@ -71,7 +72,8 @@ layui.config({
             orderType:orderType,
             goodsId:goodsId,
             goodsNumber:goodsNumber,
-            auditUser:auditUser
+            auditUser:auditUser,
+            state:state
         };
 
         $api.ocAdd(req,function (data) {

@@ -258,16 +258,19 @@ layui.define(['$tool','jquery'], function (exports) {
         ocUpdate:function(req,config,successCallback,errorCallback){
             doPost($tool.getContext()+'sysOC/update.do',req,config,successCallback,errorCallback);
         },
+        //获取下拉框内容 checkID
         GetFirstClassSysCheck:function(req,successCallback,errorCallback){
             doPost($tool.getContext() + 'sysOC/firstClassSysCheck.do',req,successCallback,errorCallback);
         },
+        //获取下拉框内容 goodsId
         GetFirstClassSysGoods:function(req,successCallback,errorCallback){
             doPost($tool.getContext() + 'sysOC/firstClassSysGoods.do',req,successCallback,errorCallback);
         },
         //增加
         ocAdd:function(req,successCallback,errorCallback){
             doPost($tool.getContext()+'sysOC/insert.do',req,successCallback,errorCallback);
-        },
+        }
+
     };
 
 

@@ -53,9 +53,9 @@ public class SysOrderCheckController {
     @RequestMapping(value = "/insert.do",method = RequestMethod.POST)
     @ResponseBody
     public IResult insert(String id,String checkId,Integer orderType, String goodsId, String goodsNumber,
-                          String auditUser){
+                          String auditUser,String state){
         return new ResultBean<SysOrderCheck>(service.insert(id,checkId,orderType,goodsId,goodsNumber,
-                auditUser));
+                auditUser,state));
     }
 
     /*删除库存*/
@@ -69,8 +69,9 @@ public class SysOrderCheckController {
     @RequestMapping(value = "/update.do",method = RequestMethod.POST)
     @ResponseBody
     public IResult updateId(String id, String checkId,Integer orderType,
-                            String goodsId, String goodsNumber, String auditUser){
-        return new ResultBean<Boolean>(service.update(id,checkId,orderType, goodsId,goodsNumber,auditUser));
+                            String goodsId, String goodsNumber, String auditUser,String state){
+        return new ResultBean<Boolean>(service.update(id,checkId,orderType, goodsId,goodsNumber,
+                auditUser,state));
     }
 
     /**

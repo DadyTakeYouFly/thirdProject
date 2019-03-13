@@ -21,7 +21,7 @@ public class SysOrderCheckServiceImpl implements SysOrderCheckService {
     }
 
     public SysOrderCheck insert(String id,String checkId,Integer orderType, String goodsId, String goodsNumber,
-                                String auditUser) {
+                                String auditUser,String state) {
         SysOrderCheck sys = new SysOrderCheck();
         sys.setId(id);
         sys.setCheckId(checkId);
@@ -29,6 +29,7 @@ public class SysOrderCheckServiceImpl implements SysOrderCheckService {
         sys.setGoodsId(goodsId);
         sys.setGoodsNumber(goodsNumber);
         sys.setAuditUser(auditUser);
+        sys.setState(state);
         dao.insert(sys);
         return sys;
     }
@@ -39,7 +40,7 @@ public class SysOrderCheckServiceImpl implements SysOrderCheckService {
     }
 
     public boolean update(String id,String checkId, Integer orderType,
-                          String goodsId, String goodsNumber, String auditUser) {
+                          String goodsId, String goodsNumber, String auditUser,String state) {
         SysOrderCheck sys = new SysOrderCheck();
         sys.setId(id);
         sys.setCheckId(checkId);
@@ -47,6 +48,7 @@ public class SysOrderCheckServiceImpl implements SysOrderCheckService {
         sys.setGoodsId(goodsId);
         sys.setGoodsNumber(goodsNumber);
         sys.setAuditUser(auditUser);
+        sys.setState(state);
         dao.update(sys);
         return true;
     }

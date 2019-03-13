@@ -10,6 +10,7 @@ public class SysOrderCheck {
     private String goodsId;
     private String goodsNumber;
     private String auditUser;
+    private String state;
 
     @Override
     public String toString() {
@@ -20,6 +21,7 @@ public class SysOrderCheck {
                 ", goodsId='" + goodsId + '\'' +
                 ", goodsNumber='" + goodsNumber + '\'' +
                 ", auditUser='" + auditUser + '\'' +
+                ", state='" + state + '\'' +
                 '}';
     }
 }

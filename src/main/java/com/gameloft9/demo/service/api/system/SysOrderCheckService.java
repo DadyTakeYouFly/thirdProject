@@ -11,14 +11,14 @@ public interface SysOrderCheckService {
 
     //增加
     SysOrderCheck insert(String id,String checkId,Integer orderType,String goodsId,
-                         String goodsNumber,String auditUser);
+                         String goodsNumber,String auditUser,String state);
 
     //删除
     boolean deleteByPrimaryKey(String id);
 
     //修改
     boolean update(String id,String checkId,Integer orderType,String goodsId, String goodsNumber,
-                   String auditUser);
+                   String auditUser,String state);
 
     //获取所有
     List<SysOrderCheck> getAll(String page,String limit,String checkId,String goodsId);

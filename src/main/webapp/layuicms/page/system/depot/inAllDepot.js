@@ -35,7 +35,7 @@ layui.config({
                 , {field: 'state', title: '订单状态',templet: '#tmp', width:100}
                 , {field: 'orderAuditUser', title: '审核人', width:80}
                 , {field: 'orderAuditTime', title: '审核时间', width:120}
-                , {field: 'applyDescribe', title: '申请描述', width:120}
+                , {field: 'applyDescribe', title: '申请描述', width:220}
                 , {field: 'auditDescribe', title: '审核描述', width:220}
                 , {fixed: 'right', title: '操作', width: 250, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
@@ -67,13 +67,6 @@ layui.config({
         });
     }
     defineTable();
-
-    /**
-     * 监听radio选择
-     * */
-    form.on('radio(menuTypeFilter)', function (data) {
-
-    });
 
     //查询  insepectId单号查询
     form.on("submit(queryDepot)", function (data) {

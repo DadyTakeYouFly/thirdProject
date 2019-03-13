@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SysOrder        CheckMapper">
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SysOrderCheckMapper">
+
     <!--订单、库存盘点订单分页信息-->
     <resultMap id="OrderMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
         <id column="ID" property="id" jdbcType="VARCHAR"/>
@@ -30,21 +31,24 @@
         <result column="ORDER_TYPE" property="orderType"/>
         <result column="GOODS_ID" property="goodsId"/>
         <result column="GOODS_NUMBER" property="goodsNumber"/>
-        <result column="AUDIT_USER" property="applyUser" />
+        <result column="AUDIT_USER" property="auditUser" />
+        <result column="STATE" property="state" />
     </resultMap>
 
     <!--将数据库里所有字段打包好，嵌入下列的sql语句中-->
     <sql id="Base_Column_List">
-       ID,CHECK_ID,ORDER_TYPE,GOODS_ID,GOODS_NUMBER,AUDIT_USER
+       ID,CHECK_ID,ORDER_TYPE,GOODS_ID,GOODS_NUMBER,AUDIT_USER,STATE
     </sql>
     <!--仓库库存订单分页显示-->
     <select id="selectAll" resultMap="sysOrderCheckMap">
         select
+            oc.ID,
             ic.ID,
             o.ORDER_TYPE,
             o.GOODS_ID,
             o.GOODS_NUMBER,
-            o.ORDER_AUDIT_USER
+            oc.AUDIT_USER,
+            oc.STATE
         from
             t_depot_order o,
             t_depot_inventory_check ic,
@@ -66,8 +70,9 @@
     <!--获取库存订单总条数  Integer getCountAll-->
     <select id="countGetAll" resultType="int" parameterType="map">
         select
-        count(1)
-        from sys_order_check
+            count(1)
+        from
+            sys_order_check
         <where>
             <if test="checkId != null and checkId != ''">
                 and CHECK_ID = #{checkId,jdbcType=VARCHAR}
@@ -83,13 +88,13 @@
         SELECT
             <include refid="Base_Column_List"/>
         FROM
-            sys_order_check t
+            sys_order_check
         WHERE
-            t.ID=#{id}
+            ID=#{id}
     </select>
 
     <!--添加-->
-    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder">
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.SysOrderCheck">
         INSERT INTO
             sys_order_check
             (ID,
@@ -97,26 +102,29 @@
             ORDER_TYPE,
             GOODS_ID,
             GOODS_NUMBER,
-            AUDIT_USER)
+            AUDIT_USER,
+            STATE)
         VALUES
             (#{id},
             #{checkId},
             #{orderType},
             #{goodsId},
             #{goodsNumber},
-            #{auditUser})
+            #{auditUser},
+            #{state})
     </insert>
 
     <!--删除-->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-        DELETE FROM
-            sys_order_check t
+        DELETE
+        FROM
+            sys_order_check
         WHERE
-            t.ID = #{id}
+            ID = #{id}
     </delete>
 
     <!--修改-->
-    <update id="update" parameterType="com.gameloft9.demo.dataaccess.model.system.SysInventoryOrder">
+    <update id="update" parameterType="com.gameloft9.demo.dataaccess.model.system.SysOrderCheck">
         UPDATE
             sys_order_check
         SET
@@ -125,20 +133,23 @@
             GOODS_ID=#{goodsId},
             GOODS_NUMBER=#{goodsNumber},
             AUDIT_USER=#{auditUser},
+            STATE=#{state},
         WHERE
             ID = #{id}
     </update>
 
     <select id="getFirstClassListCheck" resultType="java.lang.String">
         select DISTINCT
-        t.ID
-        from t_depot_inventory_check t
-        where t.ID IS NOT NULL
+            CHECK_ID
+        from
+            sys_order_check
     </select>
+
     <select id="getFirstClassListGoods" resultType="java.lang.String">
-        select
-        t.GOODS_ID
-        from t_depot_order t
-        where t.GOODS_ID IS NOT NULL
+        select distinct
+            GOODS_ID
+        from
+            t_depot_order
     </select>
+
 </mapper>

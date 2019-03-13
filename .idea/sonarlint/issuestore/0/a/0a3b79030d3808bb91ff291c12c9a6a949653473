@@ -1,0 +1,10 @@
+
+jsquid:S00117é"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íæ∫à
+4squid:S1643ù"Use a StringBuilder instead.(Ãæ•É
+csquid:CommentedOutCodeLineã"<This block of commented-out lines of code should be removed.(…©˘˚
+4squid:S1643û"Use a StringBuilder instead.(À¸Úı
+osquid:S00117ö"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ†áÕ˙ˇˇˇˇ
+Osquid:S1854?"9Remove this useless assignment to local variable "menus".(ÿœíg
+osquid:S00117ì"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ›√ò˘ˇˇˇˇ
+csquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(©◊è˘
+Osquid:S1854c"9Remove this useless assignment to local variable "menus".(ÿœíg

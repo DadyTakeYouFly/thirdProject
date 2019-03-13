@@ -64,6 +64,7 @@ layui.config({
                 $("[name='goodsId']").val(data.goodsId);
                 $("[name='goodsNumber']").val(data.goodsNumber);
                 $("[name='auditUser']").val(data.auditUser);
+                $("[name='state']").val(data.state);
                 //加载角色列表
                 loadRoleList();
                 form.render();//重新绘制表单，让修改生效
@@ -109,7 +110,8 @@ layui.config({
             var orderType = data.field.orderType;
             var goodsId = data.field.goodsId;
             var goodsNumber = data.field.goodsNumber;
-            var auditUser = data.field.auditUser
+            var auditUser = data.field.auditUser;
+            var state = data.field.state
             var idList = new Array();
 
             //请求
@@ -121,7 +123,9 @@ layui.config({
                 orderType: orderType,
                 goodsId: goodsId,
                 goodsNumber: goodsNumber,
-                auditUser: auditUser
+                auditUser: auditUser,
+                state:state,
+                depotIdList:idList
             };
 
             $api.ocUpdate(req, function (data) {
