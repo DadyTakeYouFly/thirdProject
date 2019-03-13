@@ -38,8 +38,9 @@ public class SysOrderCheckController {
     /*获取所有资料*/
     @RequestMapping(value="/list.do",method = RequestMethod.POST)
     @ResponseBody
-    public IResult selectAll(String page, String limit,String checkId, String goodsId){
-        return new PageResultBean<Collection<SysOrderCheck>>(service.getAll(page,limit,checkId,goodsId),service.countGetAll(checkId,goodsId));
+    public IResult selectAll(String page, String limit,String state, String goodsId){
+        return new PageResultBean<Collection<SysOrderCheck>>(service.getAll(page,limit,state,
+                goodsId),service.countGetAll(state,goodsId));
     }
 
     /*根据id获取该id数据*/
@@ -52,17 +53,18 @@ public class SysOrderCheckController {
     /*添加库存*/
     @RequestMapping(value = "/insert.do",method = RequestMethod.POST)
     @ResponseBody
-    public IResult insert(String id,String checkId,Integer orderType, String goodsId, String goodsNumber,
-                          String auditUser,String state){
-        return new ResultBean<SysOrderCheck>(service.insert(id,checkId,orderType,goodsId,goodsNumber,
-                auditUser,state));
+    public IResult insert(String id,String checkId,Integer orderType, String goodsId,
+                          String goodsNumber, String auditUser,String state){
+        return new ResultBean<SysOrderCheck>(service.insert(id,checkId,orderType,goodsId,
+                goodsNumber, auditUser,state));
     }
 
     /*删除库存*/
     @RequestMapping(value = "/delete.do",method = RequestMethod.GET)
     @ResponseBody
     public IResult deleteByPrimaryKey(String id){
-        return new ResultBean<Boolean>(service.deleteByPrimaryKey(id));
+        return new ResultBean<Boolean>
+                (service.deleteByPrimaryKey(id));
     }
 
     /*修改库存*/
@@ -77,11 +79,11 @@ public class SysOrderCheckController {
     /**
      * 获取所有菜单列表下拉框
      * */
-    @RequestMapping(value = "/firstClassSysCheck.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/firstClassSysState.do",method = RequestMethod.POST)
     @ResponseBody
-    public IResult getFirstMenuListCheck(){
+    public IResult getFirstMenuListState(){
         //返回json至前端的均返回ResultBean或者PageResultBean
-        return new ResultBean<Collection<SysOrderCheck>>(service.getFirstClassListCheck());
+        return new ResultBean<Collection<SysOrderCheck>>(service.getFirstClassListState());
     }
 
     @RequestMapping(value = "/firstClassSysGoods.do",method = RequestMethod.POST)
@@ -89,5 +91,12 @@ public class SysOrderCheckController {
     public IResult getFirstMenuListGoods(){
         //返回json至前端的均返回ResultBean或者PageResultBean
         return new ResultBean<Collection<SysOrderCheck>>(service.getFirstClassListGoods());
+    }
+
+    @RequestMapping(value = "/firstClassSysCheck.do",method = RequestMethod.POST)
+    @ResponseBody
+    public IResult getFirstMenuListCheck(){
+        //返回json至前端的均返回ResultBean或者PageResultBean
+        return new ResultBean<Collection<SysOrderCheck>>(service.getFirstClassListCheck());
     }
 }

@@ -23,15 +23,17 @@ public interface SysOrderCheckMapper {
     List<SysOrderCheck> selectAll(
             @Param("start") int start,
             @Param("end") int end,
-            @Param("checkId") String checkId,
+            @Param("state") String state,
             @Param("goodsId") String goodsId);
 
     //获取个数
-    int countGetAll(@Param("checkId") String checkId,
+    int countGetAll(@Param("state") String state,
                     @Param("goodsId") String goodsId);
 
     //获取下拉框
-    List<SysOrderCheck> getFirstClassListCheck();
+    List<SysOrderCheck> getFirstClassListState();
 
     List<SysOrderCheck> getFirstClassListGoods();
+
+    List<SysOrderCheck> getFirstClassListCheck();
 }

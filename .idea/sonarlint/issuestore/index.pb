@@ -25,8 +25,6 @@ h
 8src/main/webapp/layuicms/page/system/sysRole/editRole.js,6\d\6d1f2789d5b096f5cccb3474ac17f915a1deff4f
 `
 0src/main/webapp/layuicms/lib/layui/css/layui.css,3\2\3253fb4f22a2ee561a23984c8ec9773036fdc4cd
-
-Osrc/main/java/com/gameloft9/demo/dataaccess/model/system/MaterialGoodsTest.java,f\a\fa6ea75489676b590d4abecb23d339e9db445bb0
 j
 :src/main/webapp/layuicms/page/system/sysMenu/editMenu.html,0\0\00cd38b4190d9121989c35fb8a5d5050f5bff16e
 g
@@ -243,3 +241,11 @@ Osrc/main/java/com/gameloft9/demo/dataaccess/dao/system/SysOrderCheckMapper.java
 Msrc/main/java/com/gameloft9/demo/service/api/system/SysOrderCheckService.java,e\a\ea4e40fc9bd0cd02ff8de912000a13ca755ce427
 ‚
 Rsrc/main/java/com/gameloft9/demo/service/impl/system/SysOrderCheckServiceImpl.java,b\2\b25887514203268f65693af58be2c61477cb049d
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+
+Osrc/main/java/com/gameloft9/demo/service/impl/system/SysOperLogServiceImpl.java,b\3\b3c11658f1893752547c49fe854b441049773f7d
+r
+Bsrc/main/webapp/layuicms/page/system/depot/sysOrderCheckCheck.html,6\f\6fc0ae2823a95b0906f9b4f75669b5368af23c93
+p
+@src/main/webapp/layuicms/page/system/depot/sysOrderCheckCheck.js,1\9\19deada3ea36582a3fc0455b818ef6fa67a1e85d

@@ -17,28 +17,14 @@ layui.config({
      * */
     function init() {
         //初始化下拉框
-        initParentCheck();
         initParentGoods();
-
+        initParentCheck();
     }
     init();
 
     /**
      * 初始化下拉框
      * */
-    function initParentCheck() {
-        $api.GetFirstClassSysCheck(null,function (res) {
-            var data = res.data;
-            if (data.length > 0) {
-                var html = '<option value="">--请选择--</option>';
-                for (var i = 0; i < data.length; i++) {
-                    html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
-                }
-                $('#parentCheckId').append($(html));
-                form.render();
-            }
-        });
-    }
     function initParentGoods() {
         $api.GetFirstClassSysGoods(null,function (res) {
             var data = res.data;
@@ -48,6 +34,19 @@ layui.config({
                     html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
                 }
                 $('#parentGoodsId').append($(html));
+                form.render();
+            }
+        });
+    }
+    function initParentCheck() {
+        $api.GetFirstClassSysCheck(null,function (res) {
+            var data = res.data;
+            if (data.length > 0) {
+                var html = '<option value="">--请选择--</option>';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
+                }
+                $('#parentCheckId').append($(html));
                 form.render();
             }
         });

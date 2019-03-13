@@ -31,7 +31,7 @@ layui.config({
                 , {field: 'orderType', title: '货品类型(1.成品 2.原料)', width: 180}
                 , {field: 'goodsId', title: '货品名称'}
                 , {field: 'goodsNumber', title: '货品数量'}
-                , {field: 'auditUser', title: '审核人'}
+                , {field: 'auditUser', title: '盘点负责人'}
                 , {field: 'state', title: '盘点状态', width: 180}
                 , {fixed: 'right', title: '操作', width: 250, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
@@ -64,7 +64,7 @@ layui.config({
     function init() {
         //初始化下拉框
         initParentGoods();
-        initParentCheck();
+        initParentState();
     }
     init();
 
@@ -84,15 +84,15 @@ layui.config({
             }
         });
     }
-    function initParentCheck() {
-        $api.GetFirstClassSysCheck(null,function (res) {
+    function initParentState() {
+        $api.GetFirstClassSysState(null,function (res) {
             var data = res.data;
             if (data.length > 0) {
                 var html = '<option value="">--请选择--</option>';
                 for (var i = 0; i < data.length; i++) {
                     html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
                 }
-                $('#parentCheckId').append($(html));
+                $('#parentState').append($(html));
                 form.render();
             }
         });
@@ -100,14 +100,14 @@ layui.config({
 
     //查询  insepectId单号查询
     form.on("submit(queryDepot)", function (data) {
-        /*var checkId = data.field.checkId;*/
+        var state = data.field.state;
         var goodsId = data.field.goodsId;
 
 
         //表格重新加载
         tableIns.reload({
             where:{
-                /*checkId:checkId,*/
+                state:state,
                 goodsId:goodsId
             }
         });

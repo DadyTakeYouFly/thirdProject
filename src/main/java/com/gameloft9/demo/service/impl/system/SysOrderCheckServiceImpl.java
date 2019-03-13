@@ -53,25 +53,31 @@ public class SysOrderCheckServiceImpl implements SysOrderCheckService {
         return true;
     }
 
-    public List<SysOrderCheck> getAll(String page, String limit, String checkId, String goodsId) {
+    public List<SysOrderCheck> getAll(String page, String limit, String state, String goodsId) {
         PageRange pageRange = new PageRange(page,limit);
-        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),checkId,goodsId);
+        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),state,goodsId);
     }
 
-    public int countGetAll(String checkId,String goodsId) {
-        return dao.countGetAll(checkId,goodsId);
+    public int countGetAll(String state,String goodsId) {
+        return dao.countGetAll(state,goodsId);
     }
 
     //获取菜单列表下拉框内容
-    public List<SysOrderCheck> getFirstClassListCheck(){
+    public List<SysOrderCheck> getFirstClassListState(){
         List<SysOrderCheck> sys = new ArrayList<SysOrderCheck>();
-        sys = dao.getFirstClassListCheck();
+        sys = dao.getFirstClassListState();
         return sys;
     }
 
     public List<SysOrderCheck> getFirstClassListGoods(){
         List<SysOrderCheck> sys = new ArrayList<SysOrderCheck>();
         sys = dao.getFirstClassListGoods();
+        return sys;
+    }
+
+    public List<SysOrderCheck> getFirstClassListCheck(){
+        List<SysOrderCheck> sys = new ArrayList<SysOrderCheck>();
+        sys = dao.getFirstClassListCheck();
         return sys;
     }
 

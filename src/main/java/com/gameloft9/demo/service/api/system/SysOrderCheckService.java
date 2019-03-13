@@ -21,12 +21,13 @@ public interface SysOrderCheckService {
                    String auditUser,String state);
 
     //获取所有
-    List<SysOrderCheck> getAll(String page,String limit,String checkId,String goodsId);
+    List<SysOrderCheck> getAll(String page,String limit,String state,String goodsId);
 
     //获取个数
-    int countGetAll(String checkId,String goodsId);
+    int countGetAll(String state,String goodsId);
 
     //获取菜单列表下拉框
-    List<SysOrderCheck> getFirstClassListCheck();
+    List<SysOrderCheck> getFirstClassListState();
     List<SysOrderCheck> getFirstClassListGoods();
+    List<SysOrderCheck> getFirstClassListCheck();
 }

@@ -19,56 +19,72 @@ layui.config({
      * */
     function init() {
         //初始化下拉框
-        initParentCheck();
-        initParentGoods();
+        initDepotInfo();
+
     }
     init();
 
 
      /*初始化下拉框*/
-
-    function initParentCheck() {
-        $api.GetFirstClassSysCheck(null,function (res) {
-            var data = res.data;
-            if (data.length > 0) {
-                var html = '<option value="">--请选择--</option>';
-                for (var i = 0; i < data.length; i++) {
-                    html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
-                }
-                $('#parentCheckId').append($(html));
-                form.render();
-            }
-        });
-    }
-    function initParentGoods() {
+    function initParentGoods(hh) {
         $api.GetFirstClassSysGoods(null,function (res) {
             var data = res.data;
             if (data.length > 0) {
                 var html = '<option value="">--请选择--</option>';
                 for (var i = 0; i < data.length; i++) {
-                    html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
+                    html += '<option value="' + data[i] + '">' + data[i] + '</option>';
                 }
                 $('#parentGoodsId').append($(html));
+                $('#parentGoodsId').val(hh);
                 form.render();
             }
         });
     }
 
+    function initParentCheck(hh) {
+        $api.GetFirstClassSysCheck(null,function (res) {
+            var data= res.data;
+            if (data.length > 0) {
+                var html = '<option value="">--请选择--</option>';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i] + '">' + data[i] + '</option>';
+                }
+                $('#parentCheckId').append($(html));
+                $('#parentCheckId').val(hh);
+                form.render();
+            }
+        });
+    }
 
-            $api.ocGet(req, function (res) {
-                var data = res.data;
-                console.log(data)
-                $("[name='id']").val(data.id);
-                $("[name='checkId)']").val(data.checkId);
-                $("[name='orderType']").val(data.orderType);
-                $("[name='goodsId']").val(data.goodsId);
-                $("[name='goodsNumber']").val(data.goodsNumber);
-                $("[name='auditUser']").val(data.auditUser);
-                $("[name='state']").val(data.state);
-                //加载角色列表
-                loadRoleList();
-                form.render();//重新绘制表单，让修改生效
-            });
+    /**
+     * 初始化菜单信息
+     * */
+    function initDepotInfo() {
+        var queryArgs = $tool.getQueryParam();//获取查询参数
+        var id = queryArgs['id'];
+
+        var url = $tool.getContext() + 'depot/order/get.do';
+        var req = {
+            id: id
+        };
+
+        $api.ocGet(req, function (res) {
+            var data = res.data;
+            console.log(data.checkId)
+            $("[name='id']").val(data.id);
+            //$("[name='checkId)']").val(data.checkId);
+            initParentCheck(data.checkId);
+            $("[name='orderType']").val(data.orderType);
+            /*$("[name='goodsId']").val(data.goodsId);*/
+            initParentGoods(data.goodsId);
+            $("[name='goodsNumber']").val(data.goodsNumber);
+            $("[name='auditUser']").val(data.auditUser);
+            $("[name='state']").val(data.state);
+            //加载角色列表
+            loadRoleList();
+            form.render();//重新绘制表单，让修改生效
+        });
+    }
 
         /**
          * 加载角色列表
@@ -113,7 +129,7 @@ layui.config({
             var auditUser = data.field.auditUser;
             var state = data.field.state
             var idList = new Array();
-
+            alert(data.field.checkId)
             //请求
             var url = $tool.getContext() + 'sysOC/update.do';
             var req = {
@@ -127,7 +143,7 @@ layui.config({
                 state:state,
                 depotIdList:idList
             };
-
+            return;
             $api.ocUpdate(req, function (data) {
                 layer.msg("修改成功！", {time: 1000}, function () {
                     layer.closeAll("iframe");
