@@ -3,13 +3,13 @@ package com.gameloft9.demo.dataaccess.model.system;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.annotation.Generated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+
 @Data
-public class DepotUseless {
+public class DepotOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private String id;
@@ -42,5 +42,4 @@ public class DepotUseless {
                 ", auditDescribe='" + auditDescribe + '\'' +
                 '}';
     }
-
 }

@@ -1,40 +1,38 @@
 package com.gameloft9.demo.service.impl.system;
 
-import com.gameloft9.demo.dataaccess.dao.system.DepotUselessMapper;
-import com.gameloft9.demo.dataaccess.model.system.DepotUseless;
+import com.gameloft9.demo.dataaccess.dao.system.DepotOrderMapper;
+import com.gameloft9.demo.dataaccess.dao.system.DepotOrderOutMapper;
+import com.gameloft9.demo.dataaccess.model.system.DepotOrder;
+import com.gameloft9.demo.dataaccess.model.system.DepotOrderOut;
 import com.gameloft9.demo.mgrframework.utils.CheckUtil;
-import com.gameloft9.demo.service.api.system.DepotUselessService;
+import com.gameloft9.demo.service.api.system.DepotOrderOutService;
+import com.gameloft9.demo.service.api.system.DepotOrderService;
 import com.gameloft9.demo.service.beans.system.PageRange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class DepotUselessServiceImpl implements DepotUselessService {
+public class DepotOrderOutServiceImpl implements DepotOrderOutService {
 
     @Autowired
-    DepotUselessMapper dao;
-
-    //查询所有
-    //public List<DepotInventoryTest> selectAll() {
-    //    List<DepotInventoryTest> list = dao.selectAll();
-    //    return list;
-    //}
+    DepotOrderOutMapper dao;
 
     //获取id
-    public DepotUseless selectByPrimaryKey(String id) {
+    public DepotOrderOut selectByPrimaryKey(String id) {
         CheckUtil.notBlank(id,"角色id为空");
         return dao.selectByPrimaryKey(id);
     }
 
     //增加
-    public DepotUseless insert(String id, Integer orderType, String goodsId, String goodsNumber,
-                               String applyUser, Date applyTime, String state,
-                               String orderAuditUser, Date orderAuditTime, String applyDescribe,
-                               String auditDescribe) {
-        DepotUseless depot = new DepotUseless();
+    public DepotOrderOut insert(String id, Integer orderType, String goodsId, String goodsNumber,
+                             String applyUser, Date applyTime, String state,
+                             String orderAuditUser, Date orderAuditTime, String applyDescribe,
+                             String auditDescribe) {
+        DepotOrderOut depot = new DepotOrderOut();
         depot.setId(id);
         depot.setOrderType(orderType);
         depot.setGoodsId(goodsId);
@@ -60,7 +58,7 @@ public class DepotUselessServiceImpl implements DepotUselessService {
     public boolean update(String id, Integer orderType, String goodsId, String goodsNumber,
                           String applyUser, Date applyTime, String state, String orderAuditUser,
                           Date orderAuditTime, String applyDescribe, String auditDescribe) {
-        DepotUseless depot = new DepotUseless();
+        DepotOrderOut depot = new DepotOrderOut();
         depot.setId(id);
         depot.setOrderType(orderType);
         depot.setGoodsId(goodsId);
@@ -79,16 +77,23 @@ public class DepotUselessServiceImpl implements DepotUselessService {
     /**
      * 获取所有角色
      * */
-    public List<DepotUseless> getAll(String page, String limit,Integer orderType){
+    public List<DepotOrderOut> getAll(String page, String limit, Integer orderType,String state){
         PageRange pageRange = new PageRange(page,limit);
-        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),orderType);
+        return dao.selectAll(pageRange.getStart(),pageRange.getEnd(),orderType,state);
     }
 
     /**
      * 获取所有角色个数
      * */
-    public int countGetAll(Integer orderType){
-        return dao.countGetAll(orderType);
+    public int countGetAll(Integer orderType,String state){
+        return dao.countGetAll(orderType,state);
     }
 
+
+    //获取菜单列表下拉框内容
+    public List<DepotOrderOut> getFirstClassListState(){
+        List<DepotOrderOut> sys = new ArrayList<DepotOrderOut>();
+        sys = dao.getFirstClassListState();
+        return sys;
+    }
 }

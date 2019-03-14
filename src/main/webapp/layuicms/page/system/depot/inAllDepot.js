@@ -15,6 +15,33 @@ layui.config({
         $api = layui.$api;
 
     var tableIns;//表格实例
+
+    /**
+     * 页面初始化
+     * */
+    function init() {
+        //初始化下拉框
+        initParentState();
+    }
+    init();
+
+    /**
+     * 初始化下拉框
+     * */
+    function initParentState() {
+        $api.GetFirstClassDepotState(null,function (res) {
+            var data = res.data;
+            if (data.length > 0) {
+                var html = '<option value="">--请选择--</option>';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i] + '">' + data[i] + '</option>>';
+                }
+                $('#parentState').append($(html));
+                form.render();
+            }
+        });
+    }
+
     /**
      * 定义表格
      * */
@@ -31,7 +58,7 @@ layui.config({
                 , {field: 'goodsId', title: '原料/成品ID', width:120}
                 , {field: 'goodsNumber', title: '货品数量', width:100}
                 , {field: 'applyUser', title: '申请人', width:80}
-                , {field: 'applyTime', title: '申请时间', width:100}
+                , {field: 'applyTime', title: '申请时间', width:120}
                 , {field: 'state', title: '订单状态',templet: '#tmp', width:100}
                 , {field: 'orderAuditUser', title: '审核人', width:80}
                 , {field: 'orderAuditTime', title: '审核时间', width:120}
@@ -56,11 +83,10 @@ layui.config({
                 delDepot(row.id);
             } else if (layEvent === 'edit'){
              //修改
-                //do something
                 editDepot(row.id);
 
-            } else
-            { //审核
+            } else {
+             //审核
                 inspectDepot(row.id);
             }
 
@@ -71,13 +97,13 @@ layui.config({
     //查询  insepectId单号查询
     form.on("submit(queryDepot)", function (data) {
         var orderType = data.field.orderType;
-        //var state = data.field.state;
+        var state = data.field.state;
 
         //表格重新加载
         tableIns.reload({
             where:{
                 orderType:orderType,
-                //state:state
+                state:state
             }
         });
 

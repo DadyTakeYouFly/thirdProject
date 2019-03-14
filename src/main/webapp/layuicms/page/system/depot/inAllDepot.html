@@ -24,6 +24,12 @@
             </div>
         </div>
         <div class="layui-inline">
+            <label class="layui-form-label">订单状态</label>
+            <div class="layui-input-block">
+                <select id="parentState" name="state"></select>
+            </div>
+        </div>
+        <div class="layui-inline">
             <a class="layui-btn search_btn" lay-submit="" lay-filter="queryDepot">查询</a>
         </div>
         <div class="layui-inline">
@@ -44,7 +50,6 @@
 <script type="text/html" id="barDemo">
     <!--通过lay-event定义事件-->
     {{#  if(d.state === "审核通过"){ }}
-    <a class="layui-btn layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
     {{#  } }}
     {{#  if(d.state === "审核不通过"){ }}

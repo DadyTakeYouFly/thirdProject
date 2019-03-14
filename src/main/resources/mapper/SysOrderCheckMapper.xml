@@ -3,7 +3,7 @@
 <mapper namespace="com.gameloft9.demo.dataaccess.dao.system.SysOrderCheckMapper">
 
     <!--订单、库存盘点订单分页信息-->
-    <resultMap id="OrderMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrderTest">
+    <resultMap id="OrderMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrder">
         <id column="ID" property="id" jdbcType="VARCHAR"/>
         <result column="ORDER_TYPE" property="orderType" jdbcType="INTEGER"/>
         <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
@@ -46,7 +46,7 @@
             oc.CHECK_ID,
             o.ORDER_TYPE,
             o.GOODS_ID,
-            o.GOODS_NUMBER,
+            oc.GOODS_NUMBER,
             oc.AUDIT_USER,
             oc.STATE
         from
@@ -132,7 +132,7 @@
             GOODS_ID=#{goodsId},
             GOODS_NUMBER=#{goodsNumber},
             AUDIT_USER=#{auditUser},
-            STATE=#{state},
+            STATE=#{state}
         WHERE
             ID = #{id}
     </update>

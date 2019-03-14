@@ -38,7 +38,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">盘点编号</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input"  name="checkId" lay-verify="required" readonly="readonly">
+            <select id="parentCheckId" name="checkId" disabled="disabled"></select>
         </div>
     </div>
 
@@ -52,7 +52,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">货品名称</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input"  readonly="readonly" name="goodsId" lay-verify="required" >
+            <select id="parentGoodsId" name="goodsId" disabled="disabled"></select>
         </div>
     </div>
 
@@ -79,6 +79,6 @@
 <!--一般情况下，一个业务页面引入一个layui.js,config.js和业务js这三个js就够了-->
 <script type="text/javascript" src="../../../lib/layui/layui.js"></script>
 <script type="text/javascript" src="../../../common/js/config.js"></script>
-<script type="text/javascript" src="sysOrderCheckEdit.js"></script>
+<script type="text/javascript" src="sysOrderCheckCheck.js"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@ layui.config({
             $("[name='goodsNumber']").val(data.goodsNumber);
             $("[name='applyUser']").val(data.applyUser);
             $("[name='applyTime']").val(data.applyTime);
-            $("[name='state']").val(data.state);
+            /*$("[name='state']").val(data.state);*/
             $("[name='orderAuditUser']").val(data.orderAuditUser);
             $("[name='orderAuditTime']").val(data.orderAuditTime);
             $("[name='applyDescribe']").val(data.applyDescribe);

@@ -13,13 +13,13 @@ public interface DepotInventoryService {
     DepotInventoryTest selectByPrimaryKey(String id);
 
     //增加
-    DepotInventoryTest insert(String id,Integer goodsType,String goodsId,String goodsNumber);
+    DepotInventoryTest insert(String id, Integer goodsType, String goodsId, String goodsNumber);
 
     //删除
     boolean deleteByPrimaryKey(String id);
 
     //修改
-    boolean update(String id,Integer goodsType,String goodsId,String goodsNumber);
+    boolean update(String id, Integer goodsType, String goodsId, String goodsNumber);
 
     /**
      * 获取所有角色

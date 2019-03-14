@@ -1,10 +1,6 @@
 
-hsquid:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(È‹ôÊ8ÌÁ °•-
-msquid:S4488:"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(þþŽ¢ÿÿÿÿÿ8ÌÁ °•-
-squid:UselessImportCheck"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅþÿÿÿÿ8ñ¨Ç·•-
-hsquid:S4488%"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(žÉØç8ÌÁ °•-
-msquid:UselessImportCheck"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…8ÌÁ °•-
-ksquid:S44883"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ƒ°ÞÇùÿÿÿÿ8ÌÁ °•-
-[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÌÁ °•-
-hsquid:S4488,"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ð‰Ñ”8ÌÁ °•-
-isquid:UselessImportCheck"?Remove this unused import 'com.gameloft9.demo.utils.ResultMap'.(êÝ÷>8ÌÁ °•-
+msquid:S44886"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(þþŽ¢ÿÿÿÿÿ8ÌÁ °•-
+hsquid:S4488("JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ð‰Ñ”8ÌÁ °•-
+hsquid:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(È‹ôÊ8ÌÁ °•-
+hsquid:S4488!"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(žÉØç8ÌÁ °•-
+ksquid:S4488/"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ƒ°ÞÇùÿÿÿÿ8ÌÁ °•-

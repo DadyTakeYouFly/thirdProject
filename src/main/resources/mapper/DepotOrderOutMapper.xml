@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.DepotOrderMapper">
+<mapper namespace="com.gameloft9.demo.dataaccess.dao.system.DepotOrderOutMapper">
 
-    <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrder">
+    <resultMap id="BaseResultMap" type="com.gameloft9.demo.dataaccess.model.system.DepotOrderOut">
         <id column="ID" property="id" jdbcType="VARCHAR"/>
         <result column="ORDER_TYPE" property="orderType" jdbcType="INTEGER"/>
         <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR"/>
@@ -36,15 +36,15 @@
         SELECT
             <include refid="Base_Column_List"/>
         FROM
-            t_depot_order t
+            t_depot_order_out t
         WHERE
             t.ID=#{id}
     </select>
 
     <!--添加-->
-    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotOrder">
+    <insert id="insert" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotOrderOut">
         INSERT INTO
-            t_depot_order(
+            t_depot_order_out(
               ID,
               ORDER_TYPE,
               GOODS_ID,
@@ -73,15 +73,15 @@
     <!--删除-->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         DELETE FROM
-              t_depot_order
+              t_depot_order_out
         WHERE
               ID = #{id}
     </delete>
 
     <!--修改-->
-    <update id="update" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotOrder">
+    <update id="update" parameterType="com.gameloft9.demo.dataaccess.model.system.DepotOrderOut">
         UPDATE
-          t_depot_order
+          t_depot_order_out
         SET
           ORDER_TYPE=#{orderType},
           GOODS_ID=#{goodsId},
@@ -100,7 +100,7 @@
     <select id="countGetAll" resultType="int" parameterType="map">
         select
         count(1)
-        from t_depot_order t
+        from t_depot_order_out t
         <where>
         <if test="orderType != null and orderType != ''">
             and t.ORDER_TYPE = #{orderType}
@@ -113,7 +113,7 @@
 
     <!--分页的查找所有-->
     <select id="selectAll" resultMap="BaseResultMap">
-        select * from t_depot_order t
+        select * from t_depot_order_out t
         <where>
           <if test="orderType != null and orderType != ''">
             and t.ORDER_TYPE = #{orderType}
@@ -131,7 +131,7 @@
         select DISTINCT
             STATE
         from
-            t_depot_order
+            t_depot_order_out
     </select>
 
 </mapper>

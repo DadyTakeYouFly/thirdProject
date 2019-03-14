@@ -20,7 +20,6 @@ layui.config({
     function init() {
         //初始化下拉框
         initDepotInfo();
-
     }
     init();
 
@@ -70,7 +69,6 @@ layui.config({
 
         $api.ocGet(req, function (res) {
             var data = res.data;
-            console.log(data.checkId)
             $("[name='id']").val(data.id);
             //$("[name='checkId)']").val(data.checkId);
             initParentCheck(data.checkId);
@@ -129,11 +127,9 @@ layui.config({
             var auditUser = data.field.auditUser;
             var state = data.field.state
             var idList = new Array();
-            alert(data.field.checkId)
             //请求
             var url = $tool.getContext() + 'sysOC/update.do';
             var req = {
-                //id:queryArgs['id'],
                 id: id,
                 checkId:checkId,
                 orderType: orderType,
@@ -143,7 +139,7 @@ layui.config({
                 state:state,
                 depotIdList:idList
             };
-            return;
+
             $api.ocUpdate(req, function (data) {
                 layer.msg("修改成功！", {time: 1000}, function () {
                     layer.closeAll("iframe");
